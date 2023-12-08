@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from UI_Output import Ui_Output
+from ApplicationManager import *
 import sys
 
 class Ui_MainWindow(object):
@@ -15,7 +16,7 @@ class Ui_MainWindow(object):
     def show_ComponentMixer(self):
                 self.ComponentMixer.setVisible(True)
                 self.RegionBox.setVisible(False)
-                
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(953, 857)
@@ -25,6 +26,7 @@ class Ui_MainWindow(object):
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setMouseTracking(True)
         self.gridLayout_10 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_10.setObjectName("gridLayout_10")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -139,6 +141,8 @@ class Ui_MainWindow(object):
         self.component_image1_comboBox.addItem("")
         self.gridLayout_6.addWidget(self.component_image1_comboBox, 0, 1, 1, 1)
         self.image_1 = QtWidgets.QLabel(self.groupBox_image1_2)
+        self.EventFilterobject = EventFilter()
+        self.image_1.installEventFilter(self.EventFilterobject)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -146,7 +150,7 @@ class Ui_MainWindow(object):
         self.image_1.setSizePolicy(sizePolicy)
         self.image_1.setStyleSheet("background-color: #1e1e2f;")
         self.image_1.setText("")
-        self.image_1.setPixmap(QtGui.QPixmap("placeholder.png"))
+        self.image_1.setPixmap(QtGui.QPixmap("D:\Education\Digital Signal Processing\Tasks\Task 3\Signal-Equalizer\Datasets\ECG Arrhythmias\Arrhythmias Comparison\Myocardial.png"))
         self.image_1.setScaledContents(True)
         self.image_1.setObjectName("image_1")
         self.gridLayout_6.addWidget(self.image_1, 1, 0, 1, 1)
@@ -1094,5 +1098,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    Maestro = ApplicationManager(ui)
     MainWindow.show()
     sys.exit(app.exec_())
