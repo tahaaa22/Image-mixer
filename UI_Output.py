@@ -150,6 +150,24 @@ class Ui_Output(object):
         font.setPointSize(10)
         self.cancel_button.setFont(font)
         self.cancel_button.setObjectName("cancel_button")
+         # Apply the "btn-danger" style to the cancel button
+        self.cancel_button.setStyleSheet("""
+            QPushButton#cancel_button {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#cancel_button:hover {
+                background-color: #c82333;
+            }
+            
+            QPushButton#cancel_button:pressed {
+                background-color: #bd2130;
+            }
+        """)
         self.horizontalLayout_4.addWidget(self.cancel_button)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)

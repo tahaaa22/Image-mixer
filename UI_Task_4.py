@@ -633,13 +633,32 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        spacerItem1 = QtWidgets.QSpacerItem(402, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(600, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem1)
         self.apply_region = QtWidgets.QPushButton(self.RegionBox, clicked = lambda: self.open_window())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.apply_region.setFont(font)
         self.apply_region.setObjectName("apply_region")
+         # Apply the "btn-success" style to the apply_region button
+        self.apply_region.setStyleSheet("""
+            QPushButton#apply_region {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#apply_region:hover {
+                background-color: #218838;
+            }
+            
+            QPushButton#apply_region:pressed {
+                background-color: #1e7e34;
+            }
+        """)
+
         self.horizontalLayout_11.addWidget(self.apply_region)
         self.verticalLayout_5.addLayout(self.horizontalLayout_11)
         self.gridLayout_5.addLayout(self.verticalLayout_5, 0, 0, 1, 1)
@@ -962,6 +981,23 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.apply_component.setFont(font)
         self.apply_component.setObjectName("apply_component")
+        self.apply_component.setStyleSheet("""
+            QPushButton#apply_component {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#apply_component:hover {
+                background-color: #218838;
+            }
+            
+            QPushButton#apply_component:pressed {
+                background-color: #1e7e34;
+            }
+        """)
         self.horizontalLayout_9.addWidget(self.apply_component)
         self.gridLayout_3.addLayout(self.horizontalLayout_9, 1, 0, 1, 1)
         self.mixer.addWidget(self.ComponentMixer)
@@ -981,7 +1017,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Image Mixer"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">Image Mixer</span></p></body></html>"))
         self.groupBox_image1_2.setTitle(_translate("MainWindow", "Image 1"))
         self.output_imge1_comboBox.setItemText(0, _translate("MainWindow", "Output 1"))
