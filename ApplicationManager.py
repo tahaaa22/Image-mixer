@@ -2,35 +2,22 @@ from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QEvent
 from PIL import Image
-from PyQt5.QtGui import QPixmap, QImage
 import cv2
 import numpy as np
 
-class QLabel(QtWidgets.QLabel):
-    def __init__(self):
-        super().__init__()
-        self.Image_Path = None
-        self.Image = None
-    def mouseDoubleClickEvent(self, event):
-        if event.type() == QEvent.MouseButtonDblClick:
-            self.Image_Path, _ = QFileDialog.getOpenFileName(None, "Browse Signal", "", "All Files (*)")
-        if self.Image_Path:
-            self.Image = Image.open(self.Image_Path).convert('L')
-            self.Image.save('greyscale.png')
-            self.setPixmap(QtGui.QPixmap("greyscale.png"))
+Displayed_Images = {
+    "image_1" : None,
+    "image_2" : None,
+    "image_3" : None,
+    "image_4" : None
+}
 
 
-class ApplicationManager:
-    def __init__(self, ui, images):
-        self.UI = ui
-        self.Images = images   
-
-
-
-def display_components(image_path,index,label):
+def display_components(input_label,index,output_label):
     
-    original_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-    f_transform = np.fft.fft(original_image)
+    image_array = cv2.imread(Displayed_Images[input_label.objectName()], cv2.IMREAD_GRAYSCALE)
+    
+    f_transform = np.fft.fft(image_array)
     f_transform_shifted = np.fft.fftshift(f_transform)
 
     if index == 0:
@@ -42,20 +29,37 @@ def display_components(image_path,index,label):
     if index == 3:
         component = np.imag(f_transform_shifted)
 
-    pixmap = array_to_pixmap(component)
-    label.setPixmap(pixmap)
+    url = array_to_pixmap(component)
+    output_label.setPixmap(QtGui.QPixmap(url))
 
 
 def array_to_pixmap(array):
-    height, width = array.shape
-    bytes_per_line = 1 * width
-    q_image = QImage(array.data, width, height, bytes_per_line, QImage.Format_Grayscale8)
-    pixmap = QPixmap.fromImage(q_image)
-    return pixmap
+    array = array.astype(np.uint8)
+    component_image = Image.fromarray(array)
+    component_image.save("output.png")
+    return "output.png"
 
     
 
 
+
+class QLabel(QtWidgets.QLabel):
+    image_index = 0
+    def __init__(self):
+        super().__init__()
+        self.Image_Path = None
+        self.Image = None
+        
+
+    def mouseDoubleClickEvent(self, event):
+        if event.type() == QEvent.MouseButtonDblClick:
+            self.Image_Path, _ = QFileDialog.getOpenFileName(None, "Browse Signal", "", "All Files (*)")
+        if self.Image_Path:
+            self.Image = Image.open(self.Image_Path).convert('L')
+            self.Image.save(f'greyscale{QLabel.image_index}.png')
+            self.setPixmap(QtGui.QPixmap(f"greyscale{QLabel.image_index}.png"))
+            Displayed_Images[self.objectName()] = f"greyscale{QLabel.image_index}.png"
+            QLabel.image_index+=1
 
 
 

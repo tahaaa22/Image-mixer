@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         self.image_1.setSizePolicy(sizePolicy)
         self.image_1.setStyleSheet("background-color: #1e1e2f;")
         self.image_1.setText("")
-        self.image_1.setPixmap(QtGui.QPixmap("D:\Education\Digital Signal Processing\Tasks\Task 3\Signal-Equalizer\Datasets\ECG Arrhythmias\Arrhythmias Comparison\Myocardial.png"))
+        self.image_1.setPixmap(QtGui.QPixmap("placeholder.png"))
         self.image_1.setScaledContents(True)
         self.image_1.setObjectName("image_1")
         self.DisplayedImages.append(self.image_1)
@@ -335,9 +335,9 @@ class Ui_MainWindow(object):
         self.output_image2_comboBox.addItem("")
         self.output_image2_comboBox.addItem("")
         self.gridLayout_8.addWidget(self.output_image2_comboBox, 0, 0, 1, 1)
-        self.component_image2_comboBox = QtWidgets.QComboBox(self.groupBox_image1)
-        self.component_image2_comboBox.setMinimumSize(QtCore.QSize(0, 22))
-        self.component_image2_comboBox.setStyleSheet("QComboBox\n"
+        self.component_image_2_comboBox = QtWidgets.QComboBox(self.groupBox_image1)
+        self.component_image_2_comboBox.setMinimumSize(QtCore.QSize(0, 22))
+        self.component_image_2_comboBox.setStyleSheet("QComboBox\n"
 "{\n"
 "    border-radius: 3px;\n"
 "background-color: #1e1e2f;\n"
@@ -359,13 +359,13 @@ class Ui_MainWindow(object):
 "{\n"
 "    selection-background-color: transparent;\n"
 "}")
-        self.component_image2_comboBox.setMaxCount(2147483646)
-        self.component_image2_comboBox.setObjectName("component_image2_comboBox")
-        self.component_image2_comboBox.addItem("")
-        self.component_image2_comboBox.addItem("")
-        self.component_image2_comboBox.addItem("")
-        self.component_image2_comboBox.addItem("")
-        self.gridLayout_8.addWidget(self.component_image2_comboBox, 0, 1, 1, 1)
+        self.component_image_2_comboBox.setMaxCount(2147483646)
+        self.component_image_2_comboBox.setObjectName("component_image2_comboBox")
+        self.component_image_2_comboBox.addItem("")
+        self.component_image_2_comboBox.addItem("")
+        self.component_image_2_comboBox.addItem("")
+        self.component_image_2_comboBox.addItem("")
+        self.gridLayout_8.addWidget(self.component_image_2_comboBox, 0, 1, 1, 1)
         self.image_2 = QLabel()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
@@ -379,18 +379,18 @@ class Ui_MainWindow(object):
         self.image_2.setObjectName("image_2")
         self.DisplayedImages.append(self.image_2)
         self.gridLayout_8.addWidget(self.image_2, 1, 0, 1, 1)
-        self.component_image2 = QtWidgets.QLabel(self.groupBox_image1)
+        self.component_image_2 = QtWidgets.QLabel(self.groupBox_image1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.component_image2.sizePolicy().hasHeightForWidth())
-        self.component_image2.setSizePolicy(sizePolicy)
-        self.component_image2.setStyleSheet("background-color: #1e1e2f;")
-        self.component_image2.setText("")
-        self.component_image2.setPixmap(QtGui.QPixmap("placeholder.png"))
-        self.component_image2.setScaledContents(True)
-        self.component_image2.setObjectName("component_image2")
-        self.gridLayout_8.addWidget(self.component_image2, 1, 1, 1, 1)
+        sizePolicy.setHeightForWidth(self.component_image_2.sizePolicy().hasHeightForWidth())
+        self.component_image_2.setSizePolicy(sizePolicy)
+        self.component_image_2.setStyleSheet("background-color: #1e1e2f;")
+        self.component_image_2.setText("")
+        self.component_image_2.setPixmap(QtGui.QPixmap("placeholder.png"))
+        self.component_image_2.setScaledContents(True)
+        self.component_image_2.setObjectName("component_image2")
+        self.gridLayout_8.addWidget(self.component_image_2, 1, 1, 1, 1)
         self.verticalLayout.addWidget(self.groupBox_image1)
         self.groupBox_image2 = QtWidgets.QGroupBox(self.ImagesBox)
         self.groupBox_image2.setEnabled(True)
@@ -487,7 +487,7 @@ class Ui_MainWindow(object):
         self.image_4.setPixmap(QtGui.QPixmap("placeholder.png"))
         self.image_4.setScaledContents(True)
         self.image_4.setObjectName("image_4")
-        self.DisplayedImages.append(self.image_1)
+        self.DisplayedImages.append(self.image_4)
         self.gridLayout_9.addWidget(self.image_4, 1, 0, 1, 1)
         self.companent_image_4 = QtWidgets.QLabel(self.groupBox_image2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
@@ -1022,9 +1022,28 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.component_image1_comboBox.setCurrentIndex(0)
         self.component_image3_comboBox.setCurrentIndex(0)
-        self.component_image2_comboBox.setCurrentIndex(0)
+        self.component_image_2_comboBox.setCurrentIndex(0)
         self.component_image4_comboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.component_image1_comboBox.currentIndexChanged.connect(lambda : display_components(self.image_1,
+                                                                                      self.component_image1_comboBox.currentIndex(),
+                                                                                      self.component_image_1))
+        
+        self.component_image_2_comboBox.currentIndexChanged.connect(lambda : display_components(self.image_2,
+                                                                                      self.component_image_2_comboBox.currentIndex(),
+                                                                                      self.component_image_2))
+        
+        self.component_image3_comboBox.currentIndexChanged.connect(lambda : display_components(self.image_3,
+                                                                                      self.component_image3_comboBox.currentIndex(),
+                                                                                      self.component_image_3))
+        
+        self.component_image4_comboBox.currentIndexChanged.connect(lambda : display_components(self.image_4,
+                                                                                      self.component_image4_comboBox.currentIndex(),
+                                                                                      self.companent_image_4))
+        
+        
+        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -1049,11 +1068,11 @@ class Ui_MainWindow(object):
         self.groupBox_image1.setTitle(_translate("MainWindow", "Image 2"))
         self.output_image2_comboBox.setItemText(0, _translate("MainWindow", "Output 1"))
         self.output_image2_comboBox.setItemText(1, _translate("MainWindow", "Output 2"))
-        self.component_image2_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
-        self.component_image2_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
-        self.component_image2_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
-        self.component_image2_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
-        self.component_image2_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
+        self.component_image_2_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
+        self.component_image_2_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
+        self.component_image_2_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
+        self.component_image_2_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
+        self.component_image_2_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
         self.groupBox_image2.setTitle(_translate("MainWindow", "Image 4"))
         self.output_image4_comboBox.setItemText(0, _translate("MainWindow", "Output 1"))
         self.output_image4_comboBox.setItemText(1, _translate("MainWindow", "Output 2"))
@@ -1070,7 +1089,7 @@ class Ui_MainWindow(object):
         self.inner_radiobutton.setText(_translate("MainWindow", "Inner"))
         self.region_LCD.setText(_translate("MainWindow", "100%"))
         self.apply_region.setText(_translate("MainWindow", "Apply"))
-        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 1:</span></p></body></html>"))
+        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Output 1:</span></p></body></html>"))
         self.mixer1_image_combobox.setItemText(0, _translate("MainWindow", "Image 1"))
         self.mixer1_image_combobox.setItemText(1, _translate("MainWindow", "Image 2"))
         self.mixer1_image_combobox.setItemText(2, _translate("MainWindow", "Image 3"))
@@ -1083,7 +1102,7 @@ class Ui_MainWindow(object):
         self.mixer1_component_combobox.setItemText(4, _translate("MainWindow", "Real"))
         self.mixer1_component_combobox.setItemText(5, _translate("MainWindow", "Imaginary"))
         self.mixer1_component_combobox.setItemText(6, _translate("MainWindow", "Full"))
-        self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 2:</span></p></body></html>"))
+        self.label_18.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Output 2:</span></p></body></html>"))
         self.mixer2_image_combobox.setItemText(0, _translate("MainWindow", "Image 1"))
         self.mixer2_image_combobox.setItemText(1, _translate("MainWindow", "Image 2"))
         self.mixer2_image_combobox.setItemText(2, _translate("MainWindow", "Image 3"))
@@ -1105,6 +1124,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    Maestro = ApplicationManager(ui,ui.DisplayedImages)
+    #Maestro = ApplicationManager(ui,ui.DisplayedImages)
     MainWindow.show()
     sys.exit(app.exec_())
