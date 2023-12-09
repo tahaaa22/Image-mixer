@@ -3,19 +3,24 @@ from UI_Output import Ui_Output
 from ApplicationManager import *
 import sys
 
+
 class Ui_MainWindow(object):
+    def __init__(self):
+        self.DisplayedImages = []
+
+
     def open_window(self):
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_Output()
-            self.ui.setupUi(self.window)
-            self.window.show()
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Output()
+        self.ui.setupUi(self.window)
+        self.window.show()
     def show_RegionBox(self):
-                self.RegionBox.setVisible(True)
-                self.ComponentMixer.setVisible(False)
+        self.RegionBox.setVisible(True)
+        self.ComponentMixer.setVisible(False)
         
     def show_ComponentMixer(self):
-                self.ComponentMixer.setVisible(True)
-                self.RegionBox.setVisible(False)
+        self.ComponentMixer.setVisible(True)
+        self.RegionBox.setVisible(False)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -140,9 +145,7 @@ class Ui_MainWindow(object):
         self.component_image1_comboBox.addItem("")
         self.component_image1_comboBox.addItem("")
         self.gridLayout_6.addWidget(self.component_image1_comboBox, 0, 1, 1, 1)
-        self.image_1 = QtWidgets.QLabel(self.groupBox_image1_2)
-        self.EventFilterobject = EventFilter()
-        self.image_1.installEventFilter(self.EventFilterobject)
+        self.image_1 = QLabel()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -153,6 +156,7 @@ class Ui_MainWindow(object):
         self.image_1.setPixmap(QtGui.QPixmap("D:\Education\Digital Signal Processing\Tasks\Task 3\Signal-Equalizer\Datasets\ECG Arrhythmias\Arrhythmias Comparison\Myocardial.png"))
         self.image_1.setScaledContents(True)
         self.image_1.setObjectName("image_1")
+        self.DisplayedImages.append(self.image_1)
         self.gridLayout_6.addWidget(self.image_1, 1, 0, 1, 1)
         self.component_image_1 = QtWidgets.QLabel(self.groupBox_image1_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
@@ -250,7 +254,7 @@ class Ui_MainWindow(object):
         self.component_image3_comboBox.addItem("")
         self.component_image3_comboBox.addItem("")
         self.gridLayout_7.addWidget(self.component_image3_comboBox, 0, 1, 1, 1)
-        self.image_3 = QtWidgets.QLabel(self.groupBox_image3)
+        self.image_3 = QLabel()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -261,6 +265,7 @@ class Ui_MainWindow(object):
         self.image_3.setPixmap(QtGui.QPixmap("placeholder.png"))
         self.image_3.setScaledContents(True)
         self.image_3.setObjectName("image_3")
+        self.DisplayedImages.append(self.image_3)
         self.gridLayout_7.addWidget(self.image_3, 1, 0, 1, 1)
         self.component_image_3 = QtWidgets.QLabel(self.groupBox_image3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
@@ -361,7 +366,7 @@ class Ui_MainWindow(object):
         self.component_image2_comboBox.addItem("")
         self.component_image2_comboBox.addItem("")
         self.gridLayout_8.addWidget(self.component_image2_comboBox, 0, 1, 1, 1)
-        self.image_2 = QtWidgets.QLabel(self.groupBox_image1)
+        self.image_2 = QLabel()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -372,6 +377,7 @@ class Ui_MainWindow(object):
         self.image_2.setPixmap(QtGui.QPixmap("placeholder.png"))
         self.image_2.setScaledContents(True)
         self.image_2.setObjectName("image_2")
+        self.DisplayedImages.append(self.image_2)
         self.gridLayout_8.addWidget(self.image_2, 1, 0, 1, 1)
         self.component_image2 = QtWidgets.QLabel(self.groupBox_image1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
@@ -470,7 +476,7 @@ class Ui_MainWindow(object):
         self.component_image4_comboBox.addItem("")
         self.component_image4_comboBox.addItem("")
         self.gridLayout_9.addWidget(self.component_image4_comboBox, 0, 1, 1, 1)
-        self.image_4 = QtWidgets.QLabel(self.groupBox_image2)
+        self.image_4 = QLabel()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -481,6 +487,7 @@ class Ui_MainWindow(object):
         self.image_4.setPixmap(QtGui.QPixmap("placeholder.png"))
         self.image_4.setScaledContents(True)
         self.image_4.setObjectName("image_4")
+        self.DisplayedImages.append(self.image_1)
         self.gridLayout_9.addWidget(self.image_4, 1, 0, 1, 1)
         self.companent_image_4 = QtWidgets.QLabel(self.groupBox_image2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
@@ -1098,6 +1105,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    Maestro = ApplicationManager(ui)
+    Maestro = ApplicationManager(ui,ui.DisplayedImages)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -1,20 +1,29 @@
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtCore import QObject, QEvent
+from PyQt5.QtCore import QEvent
+from PIL import Image
 
-class EventFilter(QObject):
-    def eventFilter(self, watched, event):
+class QLabel(QtWidgets.QLabel):
+    def __init__(self):
+        super().__init__()
+        self.Image_Path = None
+        self.Image = None
+    def mouseDoubleClickEvent(self, event):
         if event.type() == QEvent.MouseButtonDblClick:
-            self.File_Path, _ = QFileDialog.getOpenFileName(None, "Browse Signal", "", "All Files (*)")
-        return super().eventFilter(watched, event)
+            self.Image_Path, _ = QFileDialog.getOpenFileName(None, "Browse Signal", "", "All Files (*)")
+        if self.Image_Path:
+            self.Image = Image.open(self.Image_Path).convert('L')
+            self.Image.save('greyscale.png')
+            self.setPixmap(QtGui.QPixmap("greyscale.png"))
+
+
 class ApplicationManager:
+    def __init__(self, ui, images):
+        self.UI = ui
+        self.Images = images
 
-    def __init__(self, Ui):
-        self.UI = Ui
 
 
-    def Browse_Signal(self):
-        # self.clear_graphs()
-        self.File_Path, _ = QFileDialog.getOpenFileName(None, "Browse Signal", "", "All Files (*)")
-        # if self.File_Path:
+
 
 
