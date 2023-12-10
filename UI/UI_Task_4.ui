@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>953</width>
-    <height>857</height>
+    <width>1147</width>
+    <height>896</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -110,7 +110,7 @@ QGroupBox::title  {
            </property>
            <layout class="QGridLayout" name="gridLayout_6">
             <item row="0" column="0">
-             <widget class="QComboBox" name="mixer_output_comboBox">
+             <widget class="QComboBox" name="Image1_output_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -121,7 +121,7 @@ QGroupBox::title  {
                <string notr="true">QComboBox
 {
 	border-radius: 3px;
-	background-color: rgb(13, 17, 23);
+background-color: transparent;
 }
 
 QComboBox::drop-down
@@ -154,7 +154,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboBox_3">
+             <widget class="QComboBox" name="Image1_component_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -217,7 +217,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="Image1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -239,7 +239,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="Image1_component">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -305,7 +305,7 @@ QGroupBox::title  {
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="0" column="0">
-             <widget class="QComboBox" name="mixer_output_comboBox_3">
+             <widget class="QComboBox" name="Image3_output_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -316,7 +316,7 @@ QGroupBox::title  {
                <string notr="true">QComboBox
 {
 	border-radius: 3px;
-	background-color: rgb(13, 17, 23);
+background-color: transparent;
 }
 
 QComboBox::drop-down
@@ -349,7 +349,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboBox_7">
+             <widget class="QComboBox" name="Image3_component_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -412,7 +412,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_13">
+             <widget class="QLabel" name="Image3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -504,7 +504,7 @@ QGroupBox::title  {
            </property>
            <layout class="QGridLayout" name="gridLayout_8">
             <item row="0" column="0">
-             <widget class="QComboBox" name="mixer_output_comboBox_2">
+             <widget class="QComboBox" name="Image2_output_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -515,7 +515,7 @@ QGroupBox::title  {
                <string notr="true">QComboBox
 {
 	border-radius: 3px;
-	background-color: rgb(13, 17, 23);
+background-color: transparent;
 }
 
 QComboBox::drop-down
@@ -548,7 +548,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboBox_2">
+             <widget class="QComboBox" name="Image2_component_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -611,7 +611,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="Image2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -633,7 +633,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="Image2_component">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -699,7 +699,7 @@ QGroupBox::title  {
            </property>
            <layout class="QGridLayout" name="gridLayout_9">
             <item row="0" column="0">
-             <widget class="QComboBox" name="mixer_output_comboBox_4">
+             <widget class="QComboBox" name="Image4_output_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -716,7 +716,7 @@ QGroupBox::title  {
                <string notr="true">QComboBox
 {
 	border-radius: 3px;
-	background-color: rgb(13, 17, 23);
+background-color: transparent;
 }
 
 QComboBox::drop-down
@@ -749,7 +749,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboBox_6">
+             <widget class="QComboBox" name="Image4_component_comboBox">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -812,7 +812,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="Image4">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -834,7 +834,7 @@ QComboBox QAbstractItemView
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLabel" name="label_10">
+             <widget class="QLabel" name="Image4_component">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -897,14 +897,14 @@ QGroupBox::title  {
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="RegionButton">
          <property name="text">
           <string>Regions Mixer</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="ComponentButton">
          <property name="text">
           <string>Components Mixer</string>
          </property>
@@ -936,19 +936,17 @@ QGroupBox::title  {
     color: rgb(255, 255, 255);
 }</string>
       </property>
-      <layout class="QHBoxLayout" name="mixer">
-       <item>
-        <layout class="QVBoxLayout" name="Regionbox">
-         <item>
-          <widget class="QGroupBox" name="RegionBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="RegionBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QGroupBox {
 background-color: #1e1e2f;
 border: 1.2px solid #ffffff;
 border-style: outset;
@@ -960,76 +958,76 @@ QGroupBox::title  {
     padding: -5px 0px 0px 0px;
     color: rgb(255, 255, 255);
 }</string>
-           </property>
-           <property name="title">
-            <string/>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_5">
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_13">
-                <item>
-                 <widget class="QLabel" name="label_16">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Pick Region:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>78</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+               <widget class="QLabel" name="label_16">
+                <property name="styleSheet">
+                 <string notr="true">background-color: transparent;</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Pick Region:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_10">
-                <item>
-                 <widget class="QRadioButton" name="radioButton_4">
-                  <property name="text">
-                   <string>Outer</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="radioButton_3">
-                  <property name="text">
-                   <string>Inner</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>78</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QRadioButton" name="OuterButton">
+                <property name="text">
+                 <string>Outer</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
-                <item>
-                 <widget class="QSlider" name="mixer_component1_horizontalSlider_2">
-                  <property name="minimumSize">
-                   <size>
-                    <width>160</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>320</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QSlider{
+               <widget class="QRadioButton" name="InnerButton">
+                <property name="text">
+                 <string>Inner</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QSlider" name="RegionSlider">
+                <property name="minimumSize">
+                 <size>
+                  <width>160</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QSlider{
     background-color: transparent;
 }
 
@@ -1051,89 +1049,91 @@ QSlider::handle::hover{
         radius: 1, stop: 0 #bbb, stop: 1 #000
         );
 }</string>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
-                  </property>
-                  <property name="value">
-                   <number>50</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_20">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>100%</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_11">
-                <item>
-                 <spacer name="horizontalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Maximum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>402</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_2">
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Apply</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <widget class="QLCDNumber" name="region_LCD">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Maximum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>402</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="apply_region">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"> QPushButton#apply_region {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#apply_region:hover {
+                background-color: #218838;
+            }
+            
+            QPushButton#apply_region:pressed {
+                background-color: #1e7e34;
+            }</string>
+                </property>
+                <property name="text">
+                 <string>Apply</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
            </layout>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
-       <item>
+       <item row="0" column="1">
         <widget class="QGroupBox" name="ComponentMixer">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1161,24 +1161,26 @@ QGroupBox::title  {
     color: rgb(255, 255, 255);
 }</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
+         <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QGroupBox" name="groupBox_3">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>13</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QGroupBox {
+           <layout class="QVBoxLayout" name="verticalLayout_13">
+            <item>
+             <widget class="QGroupBox" name="groupBox_3">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QGroupBox {
 background-color: #1e1e2f;
 border: 1.2px solid #ffffff;
 border:none;
@@ -1191,63 +1193,161 @@ QGroupBox::title  {
     padding: -5px 0px 0px 0px;
     color: rgb(255, 255, 255);
 }</string>
-            </property>
-            <property name="title">
-             <string/>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_2">
-             <item row="0" column="0">
-              <widget class="QWidget" name="widget" native="true">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>39</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <weight>50</weight>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: transparent;</string>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
+              </property>
+              <property name="title">
+               <string/>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_12">
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_7">
+                <layout class="QHBoxLayout" name="horizontalLayout">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <layout class="QVBoxLayout" name="verticalLayout_7">
                    <item>
-                    <widget class="QLabel" name="label_14">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: transparent;</string>
-                     </property>
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Component 1:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <item>
+                      <widget class="QLabel" name="label_14">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: transparent;</string>
+                       </property>
+                       <property name="text">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Component 1:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="mixer1_image_comboBox">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>22</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox
+{
+	border-radius: 3px;
+	background-color: rgb(13, 17, 23);
+}
+
+QComboBox::drop-down
+{
+	border-left-color: transparent;
+ }
+
+QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow
+{
+     image: url(:/icons/Arrowhead-nottop-256.png);
+     width: 7px;
+     height: 6px;
+}
+
+QComboBox QAbstractItemView
+{
+    selection-background-color: transparent;
+}</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Image 1</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 2</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 3</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 4</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="mixer_component1_comboBox">
+                    <spacer name="horizontalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Expanding</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>288</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_3">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QSlider" name="mixer_component1_horizontalSlider">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QSlider{
+    background-color: transparent;
+}
+
+QSlider::handle {
+    background-color: qradialgradient(
+        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
+        radius: 1, stop: 0 #fff, stop: 1 #424242
+        );
+	border-radius: 2px;
+    height: 40px;
+    width: 40px;
+    margin: -15px 0px;
+    }
+
+QSlider::handle::hover{
+	border: inset;
+	 background-color: qradialgradient(
+        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
+        radius: 1, stop: 0 #bbb, stop: 1 #000
+        );
+}</string>
+                       </property>
+                       <property name="maximum">
+                        <number>100</number>
+                       </property>
+                       <property name="value">
+                        <number>0</number>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLCDNumber" name="mixer1_LCD"/>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="mixer1_component_combobox">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1280,127 +1380,72 @@ QComboBox QAbstractItemView
                      </property>
                      <item>
                       <property name="text">
-                       <string>Image 1</string>
+                       <string>Phase</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 2</string>
+                       <string>Magnitude</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 3</string>
+                       <string>Real</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 4</string>
+                       <string>Imaginary</string>
                       </property>
                      </item>
                     </widget>
                    </item>
                   </layout>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Expanding</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>288</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
                  </item>
                 </layout>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
+                <widget class="Line" name="line_2">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>1</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgba(255, 255, 255,100);</string>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <layout class="QVBoxLayout" name="verticalLayout_10">
                    <item>
-                    <widget class="QSlider" name="mixer_component1_horizontalSlider">
-                     <property name="minimumSize">
-                      <size>
-                       <width>160</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>320</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QSlider{
-    background-color: transparent;
-}
-
-QSlider::handle {
-    background-color: qradialgradient(
-        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
-        radius: 1, stop: 0 #fff, stop: 1 #424242
-        );
-	border-radius: 2px;
-    height: 40px;
-    width: 40px;
-    margin: -15px 0px;
-    }
-
-QSlider::handle::hover{
-	border: inset;
-	 background-color: qradialgradient(
-        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
-        radius: 1, stop: 0 #bbb, stop: 1 #000
-        );
-}</string>
-                     </property>
-                     <property name="maximum">
-                      <number>100</number>
-                     </property>
-                     <property name="value">
-                      <number>50</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_17">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">background-color: transparent;</string>
-                     </property>
-                     <property name="text">
-                      <string>100%</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="mixed_component1_comboBox">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QComboBox
+                    <layout class="QHBoxLayout" name="horizontalLayout_17">
+                     <item>
+                      <widget class="QLabel" name="label_18">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: transparent;</string>
+                       </property>
+                       <property name="text">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Component 2:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="mixer2_image_comboBox">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>22</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox
 {
 	border-radius: 3px;
 	background-color: rgb(13, 17, 23);
@@ -1422,82 +1467,109 @@ QComboBox QAbstractItemView
 {
     selection-background-color: transparent;
 }</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>Phase</string>
-                    </property>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Image 1</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 2</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 3</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Image 4</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                    <item>
-                    <property name="text">
-                     <string>Magnitude</string>
-                    </property>
+                    <spacer name="horizontalSpacer_7">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Expanding</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>288</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
-                   <item>
-                    <property name="text">
-                     <string>Uniform Phase</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Uniform Magnitude</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Real</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Imaginary</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Full</string>
-                    </property>
-                   </item>
-                  </widget>
+                  </layout>
                  </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="0">
-              <widget class="Line" name="line_2">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>1</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 255, 255,100);</string>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_7">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <layout class="QVBoxLayout" name="verticalLayout_11">
                    <item>
-                    <widget class="QLabel" name="label_18">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: transparent;</string>
-                     </property>
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Component 2:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
+                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                     <item>
+                      <widget class="QSlider" name="mixer_component1_horizontalSlider_6">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QSlider{
+    background-color: transparent;
+}
+
+QSlider::handle {
+    background-color: qradialgradient(
+        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
+        radius: 1, stop: 0 #fff, stop: 1 #424242
+        );
+	border-radius: 2px;
+    height: 40px;
+    width: 40px;
+    margin: -15px 0px;
+    }
+
+QSlider::handle::hover{
+	border: inset;
+	 background-color: qradialgradient(
+        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
+        radius: 1, stop: 0 #bbb, stop: 1 #000
+        );
+}</string>
+                       </property>
+                       <property name="maximum">
+                        <number>100</number>
+                       </property>
+                       <property name="value">
+                        <number>0</number>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLCDNumber" name="mixer2_LCD"/>
+                     </item>
+                    </layout>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="mixer_component2_comboBox">
+                    <widget class="QComboBox" name="mixer2_component_combobox">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1530,222 +1602,81 @@ QComboBox QAbstractItemView
                      </property>
                      <item>
                       <property name="text">
-                       <string>Image 1</string>
+                       <string>Phase</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 2</string>
+                       <string>Magnitude</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 3</string>
+                       <string>Real</string>
                       </property>
                      </item>
                      <item>
                       <property name="text">
-                       <string>Image 4</string>
+                       <string>Imaginary</string>
                       </property>
                      </item>
                     </widget>
                    </item>
                   </layout>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_2">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Expanding</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>288</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_4">
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_8">
-                   <item>
-                    <widget class="QSlider" name="mixer_component2_horizontalSlider">
-                     <property name="minimumSize">
-                      <size>
-                       <width>160</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>300</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QSlider{
-    background-color: transparent;
-}
-
-QSlider::handle {
-    background-color: qradialgradient(
-        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
-        radius: 1, stop: 0 #fff, stop: 1 #424242
-        );
-	border-radius: 2px;
-    height: 40px;
-    width: 40px;
-    margin: -15px 0px;
-    }
-
-QSlider::handle::hover{
-	border: inset;
-	 background-color: qradialgradient(
-        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,
-        radius: 1, stop: 0 #bbb, stop: 1 #000
-        );
-}</string>
-                     </property>
-                     <property name="maximum">
-                      <number>100</number>
-                     </property>
-                     <property name="value">
-                      <number>50</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_19">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">background-color: transparent;</string>
-                     </property>
-                     <property name="text">
-                      <string>100%</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="mixed_component2_comboBox">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QComboBox
-{
-	border-radius: 3px;
-	background-color: rgb(13, 17, 23);
-}
-
-QComboBox::drop-down
-{
-	border-left-color: transparent;
- }
-
-QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow
-{
-     image: url(:/icons/Arrowhead-nottop-256.png);
-     width: 7px;
-     height: 6px;
-}
-
-QComboBox QAbstractItemView
-{
-    selection-background-color: transparent;
-}</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>Phase</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Magnitude</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Uniform Phase</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Uniform Magnitude</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Real</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Imaginary</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Full</string>
-                    </property>
-                   </item>
-                  </widget>
                  </item>
                 </layout>
                </item>
               </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Maximum</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>402</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Apply</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Maximum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>402</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="apply_component">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"> QPushButton#apply_component {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#apply_component:hover {
+                background-color: #218838;
+            }
+            
+            QPushButton#apply_component:pressed {
+                background-color: #1e7e34;
+            }</string>
+                </property>
+                <property name="text">
+                 <string>Apply</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>

@@ -1,8 +1,28 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import sys, cv2
+import matplotlib.pyplot as plt
 
 
 class Ui_Output(object):
+    
+    def show_image(self):
+        self.figure = plt.figure(facecolor='none', edgecolor='none', frameon= True)
+        plt.rcParams['figure.figsize'] = [100, 100]
+        plt.rcParams.update({'font.size' : 1})
+        plt.axis('off')
+        self.figure.sticky_edges.x[:]
+        self.figure.sticky_edges.y[:]
+        plt.axis('off')
+        image = FigureCanvas(self.figure)
+        #TODO: change it to be dynamic and gray image
+        read_image = cv2.imread('placeholder.png') #by default as static
+        plt.imshow(256 -read_image, extent=[0, read_image.shape[1], 0, read_image.shape[0]])
+        plt.tight_layout()
+        image.draw()
+        self.figure.set_size_inches(read_image.shape[1] / 200, read_image.shape[0] / 200)
+        return image
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(964, 523)
@@ -55,18 +75,10 @@ class Ui_Output(object):
         self.gridLayout = QtWidgets.QGridLayout(self.groupBox_image1_5)
         self.gridLayout.setContentsMargins(-1, 16, -1, -1)
         self.gridLayout.setObjectName("gridLayout")
-        self.output_image1 = QtWidgets.QLabel(self.groupBox_image1_5)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.output_image1.sizePolicy().hasHeightForWidth())
-        self.output_image1.setSizePolicy(sizePolicy)
-        self.output_image1.setStyleSheet("background-color: #1e1e2f;")
-        self.output_image1.setText("")
-        self.output_image1.setPixmap(QtGui.QPixmap("../Downloads/image-phase-magnitude-mixer-main/image-phase-magnitude-mixer-main/resources/placeholder.png"))
-        self.output_image1.setScaledContents(True)
-        self.output_image1.setObjectName("output_image1")
+         # Create a Matplotlib figure and canvas
+        self.output_image1 = self.show_image()
         self.gridLayout.addWidget(self.output_image1, 0, 0, 1, 1)
+        
         self.horizontalLayout_3.addWidget(self.groupBox_image1_5)
         self.groupBox_image1_7 = QtWidgets.QGroupBox(self.OutputBox)
         self.groupBox_image1_7.setEnabled(True)
@@ -93,17 +105,8 @@ class Ui_Output(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.groupBox_image1_7)
         self.gridLayout_4.setContentsMargins(-1, 16, -1, -1)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.output_image2 = QtWidgets.QLabel(self.groupBox_image1_7)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.output_image2.sizePolicy().hasHeightForWidth())
-        self.output_image2.setSizePolicy(sizePolicy)
-        self.output_image2.setStyleSheet("background-color: #1e1e2f;")
-        self.output_image2.setText("")
-        self.output_image2.setPixmap(QtGui.QPixmap("../Downloads/image-phase-magnitude-mixer-main/image-phase-magnitude-mixer-main/resources/placeholder.png"))
-        self.output_image2.setScaledContents(True)
-        self.output_image2.setObjectName("output_image2")
+       # Create a Matplotlib figure and canvas
+        self.output_image2 = self.show_image()
         self.gridLayout_4.addWidget(self.output_image2, 0, 0, 1, 1)
         self.horizontalLayout_3.addWidget(self.groupBox_image1_7)
         self.gridLayout_3.addWidget(self.OutputBox, 0, 0, 1, 1)
