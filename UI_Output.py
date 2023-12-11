@@ -158,6 +158,15 @@ class Ui_Output(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.output_1.ui.histogram.hide()
+        self.output_1.ui.roiBtn.hide()
+        self.output_1.ui.menuBtn.hide()
+
+        self.output_2.ui.histogram.hide()
+        self.output_2.ui.roiBtn.hide()
+        self.output_2.ui.menuBtn.hide()
+
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))

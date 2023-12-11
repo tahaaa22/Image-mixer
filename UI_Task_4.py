@@ -1,7 +1,11 @@
-from UI_Output import Ui_Output
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import ImageView
+from PyQt5.QtCore import QEvent
 import sys
+from PyQt5.QtGui import QColor
+from UI_Output import Ui_Output
+from ApplicationManager import *
+
 
 class Ui_MainWindow(object):
     def open_window(self):
@@ -137,39 +141,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.label_14)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.image1_component1_slider = QtWidgets.QSlider(self.groupBox_image1_2)
-        self.image1_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image1_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image1_component1_slider.setStyleSheet("QSlider{\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QSlider::handle {\n"
-"    background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #fff, stop: 1 #424242\n"
-"        );\n"
-"    border-radius: 2px;\n"
-"    height: 40px;\n"
-"    width: 40px;\n"
-"    margin: -15px 0px;\n"
-"    }\n"
-"\n"
-"QSlider::handle::hover{\n"
-"    border: inset;\n"
-"     background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
-"        );\n"
-"}")
-        self.image1_component1_slider.setMaximum(100)
-        self.image1_component1_slider.setProperty("value", 0)
-        self.image1_component1_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image1_component1_slider.setObjectName("image1_component1_slider")
-        self.horizontalLayout_6.addWidget(self.image1_component1_slider)
-        self.image1_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_2)
-        self.image1_component1_LCD.setObjectName("image1_component1_LCD")
-        self.horizontalLayout_6.addWidget(self.image1_component1_LCD)
         self.horizontalLayout_3.addLayout(self.horizontalLayout_6)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
@@ -301,39 +272,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.label_17)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
-        self.image2_component1_slider = QtWidgets.QSlider(self.groupBox_image1_3)
-        self.image2_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image2_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image2_component1_slider.setStyleSheet("QSlider{\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QSlider::handle {\n"
-"    background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #fff, stop: 1 #424242\n"
-"        );\n"
-"    border-radius: 2px;\n"
-"    height: 40px;\n"
-"    width: 40px;\n"
-"    margin: -15px 0px;\n"
-"    }\n"
-"\n"
-"QSlider::handle::hover{\n"
-"    border: inset;\n"
-"     background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
-"        );\n"
-"}")
-        self.image2_component1_slider.setMaximum(100)
-        self.image2_component1_slider.setProperty("value", 0)
-        self.image2_component1_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image2_component1_slider.setObjectName("image2_component1_slider")
-        self.horizontalLayout_19.addWidget(self.image2_component1_slider)
-        self.image2_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_3)
-        self.image2_component1_LCD.setObjectName("image2_component1_LCD")
-        self.horizontalLayout_19.addWidget(self.image2_component1_LCD)
         self.horizontalLayout_15.addLayout(self.horizontalLayout_19)
         self.verticalLayout_3.addLayout(self.horizontalLayout_15)
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
@@ -468,39 +406,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.addWidget(self.label_22)
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
-        self.image3_component1_slider = QtWidgets.QSlider(self.groupBox_image1_5)
-        self.image3_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image3_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image3_component1_slider.setStyleSheet("QSlider{\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QSlider::handle {\n"
-"    background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #fff, stop: 1 #424242\n"
-"        );\n"
-"    border-radius: 2px;\n"
-"    height: 40px;\n"
-"    width: 40px;\n"
-"    margin: -15px 0px;\n"
-"    }\n"
-"\n"
-"QSlider::handle::hover{\n"
-"    border: inset;\n"
-"     background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
-"        );\n"
-"}")
-        self.image3_component1_slider.setMaximum(100)
-        self.image3_component1_slider.setProperty("value", 0)
-        self.image3_component1_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image3_component1_slider.setObjectName("image3_component1_slider")
-        self.horizontalLayout_31.addWidget(self.image3_component1_slider)
-        self.image3_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_5)
-        self.image3_component1_LCD.setObjectName("image3_component1_LCD")
-        self.horizontalLayout_31.addWidget(self.image3_component1_LCD)
         self.horizontalLayout_30.addLayout(self.horizontalLayout_31)
         self.verticalLayout_6.addLayout(self.horizontalLayout_30)
         self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
@@ -632,39 +537,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.addWidget(self.label_20)
         self.horizontalLayout_25 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_25.setObjectName("horizontalLayout_25")
-        self.image4_component1_slider = QtWidgets.QSlider(self.groupBox_image1_4)
-        self.image4_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image4_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image4_component1_slider.setStyleSheet("QSlider{\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QSlider::handle {\n"
-"    background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #fff, stop: 1 #424242\n"
-"        );\n"
-"    border-radius: 2px;\n"
-"    height: 40px;\n"
-"    width: 40px;\n"
-"    margin: -15px 0px;\n"
-"    }\n"
-"\n"
-"QSlider::handle::hover{\n"
-"    border: inset;\n"
-"     background-color: qradialgradient(\n"
-"        cx: 0.7, cy: 1.4, fx: 0.7, fy: 1.4,\n"
-"        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
-"        );\n"
-"}")
-        self.image4_component1_slider.setMaximum(100)
-        self.image4_component1_slider.setProperty("value", 0)
-        self.image4_component1_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image4_component1_slider.setObjectName("image4_component1_slider")
-        self.horizontalLayout_25.addWidget(self.image4_component1_slider)
-        self.image4_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_4)
-        self.image4_component1_LCD.setObjectName("image4_component1_LCD")
-        self.horizontalLayout_25.addWidget(self.image4_component1_LCD)
         self.horizontalLayout_24.addLayout(self.horizontalLayout_25)
         self.verticalLayout_4.addLayout(self.horizontalLayout_24)
         self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
@@ -882,6 +754,25 @@ class Ui_MainWindow(object):
         self.Image3_component_comboBox.setCurrentIndex(0)
         self.Image4_component_comboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        ImageViews = [self.Image_1,self.Image1_component,self.Image_2,self.Image2_component,self.Image_3,self.Image3_component,
+                      self.Image_4,self.Image4_component]
+         
+        for image in ImageViews:
+            image.ui.histogram.hide()
+            image.ui.roiBtn.hide()
+            image.ui.menuBtn.hide()
+            
+
+        ComponentImageViews = [self.Image1_component,self.Image2_component,self.Image3_component,self.Image4_component]
+        background_color = QColor(255, 255, 255)
+        for image in ComponentImageViews:
+            image.ui.graphicsView.setBackground(background_color)
+
+        self.Image1_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(0,self.Image1_component_comboBox.currentIndex()))
+        self.Image2_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(1,self.Image2_component_comboBox.currentIndex()))
+        self.Image3_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(2,self.Image3_component_comboBox.currentIndex()))
+        self.Image4_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(3,self.Image4_component_comboBox.currentIndex()))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -893,32 +784,28 @@ class Ui_MainWindow(object):
         self.Image1_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image1_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image1_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 1:</span></p></body></html>"))
-        self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 2:</span></p></body></html>"))
+        self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
         self.groupBox_image1_3.setTitle(_translate("MainWindow", "Image 2"))
         self.Image2_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image2_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image2_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image2_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image2_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 1:</span></p></body></html>"))
-        self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 2:</span></p></body></html>"))
+        self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
         self.groupBox_image1_5.setTitle(_translate("MainWindow", "Image 3"))
         self.Image3_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image3_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image3_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image3_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image3_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_22.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 1:</span></p></body></html>"))
-        self.label_23.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 2:</span></p></body></html>"))
+        self.label_23.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
         self.groupBox_image1_4.setTitle(_translate("MainWindow", "Image 4"))
         self.Image4_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image4_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image4_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image4_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image4_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 1:</span></p></body></html>"))
-        self.label_21.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component 2:</span></p></body></html>"))
+        self.label_21.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
         self.RegionBox.setTitle(_translate("MainWindow", "Region Mixer"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Pick Region:</span></p></body></html>"))
         self.OuterButton.setText(_translate("MainWindow", "Outer"))
@@ -927,6 +814,10 @@ class Ui_MainWindow(object):
         self.output2_button.setText(_translate("MainWindow", "Outout 2"))
         self.apply_button.setText(_translate("MainWindow", "Apply"))
 
+class ImageView(ImageView):
+
+    def mouseDoubleClickEvent(self, event):
+        MAESTRO.load_image(self)
 
 
 if __name__ == "__main__":
@@ -934,5 +825,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    MAESTRO = AppManager(ui)
     MainWindow.show()
     sys.exit(app.exec_())
