@@ -83,7 +83,7 @@ QGroupBox::title  {
            <number>16</number>
           </property>
           <item row="0" column="0">
-           <widget class="QWidget" name="Output_1" native="true"/>
+           <widget class="ImageView" name="output_1"/>
           </item>
          </layout>
         </widget>
@@ -133,7 +133,7 @@ QGroupBox::title  {
            <number>16</number>
           </property>
           <item row="0" column="0">
-           <widget class="QWidget" name="Output_2" native="true"/>
+           <widget class="ImageView" name="output_2"/>
           </item>
          </layout>
         </widget>
@@ -203,11 +203,28 @@ QGroupBox::title  {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="cancel_button">
              <property name="font">
               <font>
                <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#cancel_button {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            QPushButton#cancel_button:hover {
+                background-color: #c82333;
+            }
+            
+            QPushButton#cancel_button:pressed {
+                background-color: #bd2130;
+            }</string>
              </property>
              <property name="text">
               <string>Cancel</string>
@@ -225,6 +242,13 @@ QGroupBox::title  {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ImageView</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

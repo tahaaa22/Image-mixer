@@ -1,28 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import sys, cv2
-import matplotlib.pyplot as plt
 
 
 class Ui_Output(object):
-    
-    def show_image(self):
-        self.figure = plt.figure(facecolor='none', edgecolor='none', frameon= True)
-        plt.rcParams['figure.figsize'] = [100, 100]
-        plt.rcParams.update({'font.size' : 1})
-        plt.axis('off')
-        self.figure.sticky_edges.x[:]
-        self.figure.sticky_edges.y[:]
-        plt.axis('off')
-        image = FigureCanvas(self.figure)
-        #TODO: change it to be dynamic and gray image
-        read_image = cv2.imread('placeholder.png') #by default as static
-        plt.imshow(256 -read_image, extent=[0, read_image.shape[1], 0, read_image.shape[0]])
-        plt.tight_layout()
-        image.draw()
-        self.figure.set_size_inches(read_image.shape[1] / 200, read_image.shape[0] / 200)
-        return image
-    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(964, 523)
@@ -75,10 +54,9 @@ class Ui_Output(object):
         self.gridLayout = QtWidgets.QGridLayout(self.groupBox_image1_5)
         self.gridLayout.setContentsMargins(-1, 16, -1, -1)
         self.gridLayout.setObjectName("gridLayout")
-         # Create a Matplotlib figure and canvas
-        self.output_image1 = self.show_image()
-        self.gridLayout.addWidget(self.output_image1, 0, 0, 1, 1)
-        
+        self.output_1 = ImageView(self.groupBox_image1_5)
+        self.output_1.setObjectName("output_1")
+        self.gridLayout.addWidget(self.output_1, 0, 0, 1, 1)
         self.horizontalLayout_3.addWidget(self.groupBox_image1_5)
         self.groupBox_image1_7 = QtWidgets.QGroupBox(self.OutputBox)
         self.groupBox_image1_7.setEnabled(True)
@@ -105,9 +83,9 @@ class Ui_Output(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.groupBox_image1_7)
         self.gridLayout_4.setContentsMargins(-1, 16, -1, -1)
         self.gridLayout_4.setObjectName("gridLayout_4")
-       # Create a Matplotlib figure and canvas
-        self.output_image2 = self.show_image()
-        self.gridLayout_4.addWidget(self.output_image2, 0, 0, 1, 1)
+        self.output_2 = ImageView(self.groupBox_image1_7)
+        self.output_2.setObjectName("output_2")
+        self.gridLayout_4.addWidget(self.output_2, 0, 0, 1, 1)
         self.horizontalLayout_3.addWidget(self.groupBox_image1_7)
         self.gridLayout_3.addWidget(self.OutputBox, 0, 0, 1, 1)
         self.ProgressBox = QtWidgets.QGroupBox(self.centralwidget)
@@ -152,25 +130,22 @@ class Ui_Output(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.cancel_button.setFont(font)
+        self.cancel_button.setStyleSheet("QPushButton#cancel_button {\n"
+"                background-color: #dc3545;\n"
+"                color: white;\n"
+"                border: none;\n"
+"                padding: 5px 10px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            \n"
+"            QPushButton#cancel_button:hover {\n"
+"                background-color: #c82333;\n"
+"            }\n"
+"            \n"
+"            QPushButton#cancel_button:pressed {\n"
+"                background-color: #bd2130;\n"
+"            }")
         self.cancel_button.setObjectName("cancel_button")
-         # Apply the "btn-danger" style to the cancel button
-        self.cancel_button.setStyleSheet("""
-            QPushButton#cancel_button {
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                padding: 5px 10px;
-                border-radius: 5px;
-            }
-            
-            QPushButton#cancel_button:hover {
-                background-color: #c82333;
-            }
-            
-            QPushButton#cancel_button:pressed {
-                background-color: #bd2130;
-            }
-        """)
         self.horizontalLayout_4.addWidget(self.cancel_button)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
@@ -190,10 +165,11 @@ class Ui_Output(object):
         self.groupBox_image1_7.setTitle(_translate("MainWindow", "Output 2"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Progress Bar:</span></p></body></html>"))
         self.cancel_button.setText(_translate("MainWindow", "Cancel"))
+from pyqtgraph import ImageView
 
 
 if __name__ == "__main__":
-  
+    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_Output()
