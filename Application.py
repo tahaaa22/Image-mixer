@@ -22,18 +22,18 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap("Assets/Logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                 "background-color: #1e1e2f;\n"
-                                 "")
+"background-color: #1e1e2f;\n"
+"")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout_8 = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout_8.setObjectName("gridLayout_8")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout_9.setObjectName("gridLayout_9")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setMaximumSize(QtCore.QSize(16777215, 30))
         self.label.setObjectName("label")
-        self.verticalLayout_9.addWidget(self.label)
+        self.gridLayout_9.addWidget(self.label, 0, 0, 1, 1)
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.ImagesBox = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -41,18 +41,18 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.ImagesBox.sizePolicy().hasHeightForWidth())
         self.ImagesBox.setSizePolicy(sizePolicy)
         self.ImagesBox.setStyleSheet("QGroupBox {\n"
-                                     "background-color: #1e1e2f;\n"
-                                     "border: 1.2px solid #ffffff;\n"
-                                     "border: none;\n"
-                                     "border-style: outset;\n"
-                                     "border-radius: 15px;\n"
-                                     "}\n"
-                                     "QGroupBox::title  {\n"
-                                     "    subcontrol-origin: margin;\n"
-                                     "    subcontrol-position: top left;\n"
-                                     "    padding: -5px 0px 0px 0px;\n"
-                                     "    color: rgb(255, 255, 255);\n"
-                                     "}")
+                                    "background-color: #1e1e2f;\n"
+                                    "border: 1.2px solid #ffffff;\n"
+                                    "border: none;\n"
+                                    "border-style: outset;\n"
+                                    "border-radius: 15px;\n"
+                                    "}\n"
+                                    "QGroupBox::title  {\n"
+                                    "    subcontrol-origin: margin;\n"
+                                    "    subcontrol-position: top left;\n"
+                                    "    padding: -5px 0px 0px 0px;\n"
+                                    "    color: rgb(255, 255, 255);\n"
+                                    "}")
         self.ImagesBox.setObjectName("ImagesBox")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.ImagesBox)
         self.gridLayout_7.setObjectName("gridLayout_7")
@@ -70,17 +70,17 @@ class Ui_MainWindow(object):
         self.groupBox_image1_2.setMinimumSize(QtCore.QSize(400, 0))
         self.groupBox_image1_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.groupBox_image1_2.setStyleSheet("QGroupBox {\n"
-                                             "background-color: #1e1e2f;\n"
-                                             "border: 1.2px solid #ffffff;\n"
-                                             "border-style: outset;\n"
-                                             "border-radius: 15px;\n"
-                                             "}\n"
-                                             "QGroupBox::title  {\n"
-                                             "    subcontrol-origin: margin;\n"
-                                             "    subcontrol-position: top left;\n"
-                                             "    padding: -5px 0px 0px 0px;\n"
-                                             "    color: rgb(255, 255, 255);\n"
-                                             "}")
+                                            "background-color: #1e1e2f;\n"
+                                            "border: 1.2px solid #ffffff;\n"
+                                            "border-style: outset;\n"
+                                            "border-radius: 15px;\n"
+                                            "}\n"
+                                            "QGroupBox::title  {\n"
+                                            "    subcontrol-origin: margin;\n"
+                                            "    subcontrol-position: top left;\n"
+                                            "    padding: -5px 0px 0px 0px;\n"
+                                            "    color: rgb(255, 255, 255);\n"
+                                            "}")
         self.groupBox_image1_2.setObjectName("groupBox_image1_2")
         self.gridLayout = QtWidgets.QGridLayout(self.groupBox_image1_2)
         self.gridLayout.setObjectName("gridLayout")
@@ -98,27 +98,27 @@ class Ui_MainWindow(object):
         self.Image1_component_comboBox.setSizePolicy(sizePolicy)
         self.Image1_component_comboBox.setMinimumSize(QtCore.QSize(176, 22))
         self.Image1_component_comboBox.setStyleSheet("QComboBox\n"
-                                                     "{\n"
-                                                     "    border-radius: 3px;\n"
-                                                     "background-color: #1e1e2f;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox::drop-down\n"
-                                                     "{\n"
-                                                     "    border-left-color: transparent;\n"
-                                                     " }\n"
-                                                     "\n"
-                                                     "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
-                                                     "{\n"
-                                                     "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
-                                                     "     width: 7px;\n"
-                                                     "     height: 6px;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox QAbstractItemView\n"
-                                                     "{\n"
-                                                     "    selection-background-color: transparent;\n"
-                                                     "}")
+                                                    "{\n"
+                                                    "    border-radius: 3px;\n"
+                                                    "background-color: #1e1e2f;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox::drop-down\n"
+                                                    "{\n"
+                                                    "    border-left-color: transparent;\n"
+                                                    " }\n"
+                                                    "\n"
+                                                    "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
+                                                    "{\n"
+                                                    "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
+                                                    "     width: 7px;\n"
+                                                    "     height: 6px;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox QAbstractItemView\n"
+                                                    "{\n"
+                                                    "    selection-background-color: transparent;\n"
+                                                    "}")
         self.Image1_component_comboBox.setMaxCount(2147483646)
         self.Image1_component_comboBox.setObjectName("Image1_component_comboBox")
         self.Image1_component_comboBox.addItem("")
@@ -144,20 +144,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.label_14)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.horizontalLayout_3.addLayout(self.horizontalLayout_6)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.label_15 = QtWidgets.QLabel(self.groupBox_image1_2)
-        self.label_15.setStyleSheet("background-color: transparent;")
-        self.label_15.setObjectName("label_15")
-        self.horizontalLayout_5.addWidget(self.label_15)
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.image1_component2_slider = QtWidgets.QSlider(self.groupBox_image1_2)
-        self.image1_component2_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image1_component2_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image1_component2_slider.setStyleSheet("QSlider{\n"
+        self.image1_component1_slider = QtWidgets.QSlider(self.groupBox_image1_2)
+        self.image1_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
+        self.image1_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.image1_component1_slider.setStyleSheet("QSlider{\n"
                                                     "    background-color: transparent;\n"
                                                     "}\n"
                                                     "\n"
@@ -179,16 +169,16 @@ class Ui_MainWindow(object):
                                                     "        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
                                                     "        );\n"
                                                     "}")
-        self.image1_component2_slider.setMaximum(100)
-        self.image1_component2_slider.setProperty("value", 0)
-        self.image1_component2_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image1_component2_slider.setObjectName("image1_component2_slider")
-        self.horizontalLayout_8.addWidget(self.image1_component2_slider)
-        self.image1_component2_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_2)
-        self.image1_component2_LCD.setObjectName("image1_component2_LCD")
-        self.horizontalLayout_8.addWidget(self.image1_component2_LCD)
-        self.horizontalLayout_5.addLayout(self.horizontalLayout_8)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+        self.image1_component1_slider.setMaximum(100)
+        self.image1_component1_slider.setProperty("value", 0)
+        self.image1_component1_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.image1_component1_slider.setObjectName("image1_component1_slider")
+        self.horizontalLayout_6.addWidget(self.image1_component1_slider)
+        self.image1_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_2)
+        self.image1_component1_LCD.setObjectName("image1_component1_LCD")
+        self.horizontalLayout_6.addWidget(self.image1_component1_LCD)
+        self.horizontalLayout_3.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
         self.horizontalLayout_35.addWidget(self.groupBox_image1_2)
         self.groupBox_image1_3 = QtWidgets.QGroupBox(self.ImagesBox)
@@ -201,17 +191,17 @@ class Ui_MainWindow(object):
         self.groupBox_image1_3.setMinimumSize(QtCore.QSize(400, 0))
         self.groupBox_image1_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.groupBox_image1_3.setStyleSheet("QGroupBox {\n"
-                                             "background-color: #1e1e2f;\n"
-                                             "border: 1.2px solid #ffffff;\n"
-                                             "border-style: outset;\n"
-                                             "border-radius: 15px;\n"
-                                             "}\n"
-                                             "QGroupBox::title  {\n"
-                                             "    subcontrol-origin: margin;\n"
-                                             "    subcontrol-position: top left;\n"
-                                             "    padding: -5px 0px 0px 0px;\n"
-                                             "    color: rgb(255, 255, 255);\n"
-                                             "}")
+                                            "background-color: #1e1e2f;\n"
+                                            "border: 1.2px solid #ffffff;\n"
+                                            "border-style: outset;\n"
+                                            "border-radius: 15px;\n"
+                                            "}\n"
+                                            "QGroupBox::title  {\n"
+                                            "    subcontrol-origin: margin;\n"
+                                            "    subcontrol-position: top left;\n"
+                                            "    padding: -5px 0px 0px 0px;\n"
+                                            "    color: rgb(255, 255, 255);\n"
+                                            "}")
         self.groupBox_image1_3.setObjectName("groupBox_image1_3")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.groupBox_image1_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -229,27 +219,27 @@ class Ui_MainWindow(object):
         self.Image2_component_comboBox.setSizePolicy(sizePolicy)
         self.Image2_component_comboBox.setMinimumSize(QtCore.QSize(176, 22))
         self.Image2_component_comboBox.setStyleSheet("QComboBox\n"
-                                                     "{\n"
-                                                     "    border-radius: 3px;\n"
-                                                     "background-color: #1e1e2f;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox::drop-down\n"
-                                                     "{\n"
-                                                     "    border-left-color: transparent;\n"
-                                                     " }\n"
-                                                     "\n"
-                                                     "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
-                                                     "{\n"
-                                                     "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
-                                                     "     width: 7px;\n"
-                                                     "     height: 6px;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox QAbstractItemView\n"
-                                                     "{\n"
-                                                     "    selection-background-color: transparent;\n"
-                                                     "}")
+                                                    "{\n"
+                                                    "    border-radius: 3px;\n"
+                                                    "background-color: #1e1e2f;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox::drop-down\n"
+                                                    "{\n"
+                                                    "    border-left-color: transparent;\n"
+                                                    " }\n"
+                                                    "\n"
+                                                    "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
+                                                    "{\n"
+                                                    "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
+                                                    "     width: 7px;\n"
+                                                    "     height: 6px;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox QAbstractItemView\n"
+                                                    "{\n"
+                                                    "    selection-background-color: transparent;\n"
+                                                    "}")
         self.Image2_component_comboBox.setMaxCount(2147483646)
         self.Image2_component_comboBox.setObjectName("Image2_component_comboBox")
         self.Image2_component_comboBox.addItem("")
@@ -275,20 +265,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.label_17)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
-        self.horizontalLayout_15.addLayout(self.horizontalLayout_19)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_15)
-        self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
-        self.label_19 = QtWidgets.QLabel(self.groupBox_image1_3)
-        self.label_19.setStyleSheet("background-color: transparent;")
-        self.label_19.setObjectName("label_19")
-        self.horizontalLayout_20.addWidget(self.label_19)
-        self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
-        self.image2_component2_slider = QtWidgets.QSlider(self.groupBox_image1_3)
-        self.image2_component2_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image2_component2_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image2_component2_slider.setStyleSheet("QSlider{\n"
+        self.image2_component1_slider = QtWidgets.QSlider(self.groupBox_image1_3)
+        self.image2_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
+        self.image2_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.image2_component1_slider.setStyleSheet("QSlider{\n"
                                                     "    background-color: transparent;\n"
                                                     "}\n"
                                                     "\n"
@@ -310,14 +290,20 @@ class Ui_MainWindow(object):
                                                     "        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
                                                     "        );\n"
                                                     "}")
-        self.image2_component2_slider.setMaximum(100)
-        self.image2_component2_slider.setProperty("value", 0)
-        self.image2_component2_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image2_component2_slider.setObjectName("image2_component2_slider")
-        self.horizontalLayout_21.addWidget(self.image2_component2_slider)
-        self.image2_component2_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_3)
-        self.image2_component2_LCD.setObjectName("image2_component2_LCD")
-        self.horizontalLayout_21.addWidget(self.image2_component2_LCD)
+        self.image2_component1_slider.setMaximum(100)
+        self.image2_component1_slider.setProperty("value", 0)
+        self.image2_component1_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.image2_component1_slider.setObjectName("image2_component1_slider")
+        self.horizontalLayout_19.addWidget(self.image2_component1_slider)
+        self.image2_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_3)
+        self.image2_component1_LCD.setObjectName("image2_component1_LCD")
+        self.horizontalLayout_19.addWidget(self.image2_component1_LCD)
+        self.horizontalLayout_15.addLayout(self.horizontalLayout_19)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_15)
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         self.horizontalLayout_20.addLayout(self.horizontalLayout_21)
         self.verticalLayout_3.addLayout(self.horizontalLayout_20)
         self.gridLayout_2.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
@@ -335,17 +321,17 @@ class Ui_MainWindow(object):
         self.groupBox_image1_5.setMinimumSize(QtCore.QSize(400, 0))
         self.groupBox_image1_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.groupBox_image1_5.setStyleSheet("QGroupBox {\n"
-                                             "background-color: #1e1e2f;\n"
-                                             "border: 1.2px solid #ffffff;\n"
-                                             "border-style: outset;\n"
-                                             "border-radius: 15px;\n"
-                                             "}\n"
-                                             "QGroupBox::title  {\n"
-                                             "    subcontrol-origin: margin;\n"
-                                             "    subcontrol-position: top left;\n"
-                                             "    padding: -5px 0px 0px 0px;\n"
-                                             "    color: rgb(255, 255, 255);\n"
-                                             "}")
+                                            "background-color: #1e1e2f;\n"
+                                            "border: 1.2px solid #ffffff;\n"
+                                            "border-style: outset;\n"
+                                            "border-radius: 15px;\n"
+                                            "}\n"
+                                            "QGroupBox::title  {\n"
+                                            "    subcontrol-origin: margin;\n"
+                                            "    subcontrol-position: top left;\n"
+                                            "    padding: -5px 0px 0px 0px;\n"
+                                            "    color: rgb(255, 255, 255);\n"
+                                            "}")
         self.groupBox_image1_5.setObjectName("groupBox_image1_5")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.groupBox_image1_5)
         self.gridLayout_6.setObjectName("gridLayout_6")
@@ -363,27 +349,27 @@ class Ui_MainWindow(object):
         self.Image3_component_comboBox.setSizePolicy(sizePolicy)
         self.Image3_component_comboBox.setMinimumSize(QtCore.QSize(176, 22))
         self.Image3_component_comboBox.setStyleSheet("QComboBox\n"
-                                                     "{\n"
-                                                     "    border-radius: 3px;\n"
-                                                     "background-color: #1e1e2f;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox::drop-down\n"
-                                                     "{\n"
-                                                     "    border-left-color: transparent;\n"
-                                                     " }\n"
-                                                     "\n"
-                                                     "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
-                                                     "{\n"
-                                                     "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
-                                                     "     width: 7px;\n"
-                                                     "     height: 6px;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox QAbstractItemView\n"
-                                                     "{\n"
-                                                     "    selection-background-color: transparent;\n"
-                                                     "}")
+                                                    "{\n"
+                                                    "    border-radius: 3px;\n"
+                                                    "background-color: #1e1e2f;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox::drop-down\n"
+                                                    "{\n"
+                                                    "    border-left-color: transparent;\n"
+                                                    " }\n"
+                                                    "\n"
+                                                    "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
+                                                    "{\n"
+                                                    "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
+                                                    "     width: 7px;\n"
+                                                    "     height: 6px;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox QAbstractItemView\n"
+                                                    "{\n"
+                                                    "    selection-background-color: transparent;\n"
+                                                    "}")
         self.Image3_component_comboBox.setMaxCount(2147483646)
         self.Image3_component_comboBox.setObjectName("Image3_component_comboBox")
         self.Image3_component_comboBox.addItem("")
@@ -409,20 +395,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.addWidget(self.label_22)
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
-        self.horizontalLayout_30.addLayout(self.horizontalLayout_31)
-        self.verticalLayout_6.addLayout(self.horizontalLayout_30)
-        self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_32.setObjectName("horizontalLayout_32")
-        self.label_23 = QtWidgets.QLabel(self.groupBox_image1_5)
-        self.label_23.setStyleSheet("background-color: transparent;")
-        self.label_23.setObjectName("label_23")
-        self.horizontalLayout_32.addWidget(self.label_23)
-        self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
-        self.image3_component2_slider = QtWidgets.QSlider(self.groupBox_image1_5)
-        self.image3_component2_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image3_component2_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image3_component2_slider.setStyleSheet("QSlider{\n"
+        self.image3_component1_slider = QtWidgets.QSlider(self.groupBox_image1_5)
+        self.image3_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
+        self.image3_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.image3_component1_slider.setStyleSheet("QSlider{\n"
                                                     "    background-color: transparent;\n"
                                                     "}\n"
                                                     "\n"
@@ -444,14 +420,20 @@ class Ui_MainWindow(object):
                                                     "        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
                                                     "        );\n"
                                                     "}")
-        self.image3_component2_slider.setMaximum(100)
-        self.image3_component2_slider.setProperty("value", 0)
-        self.image3_component2_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image3_component2_slider.setObjectName("image3_component2_slider")
-        self.horizontalLayout_33.addWidget(self.image3_component2_slider)
-        self.image3_component2_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_5)
-        self.image3_component2_LCD.setObjectName("image3_component2_LCD")
-        self.horizontalLayout_33.addWidget(self.image3_component2_LCD)
+        self.image3_component1_slider.setMaximum(100)
+        self.image3_component1_slider.setProperty("value", 0)
+        self.image3_component1_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.image3_component1_slider.setObjectName("image3_component1_slider")
+        self.horizontalLayout_31.addWidget(self.image3_component1_slider)
+        self.image3_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_5)
+        self.image3_component1_LCD.setObjectName("image3_component1_LCD")
+        self.horizontalLayout_31.addWidget(self.image3_component1_LCD)
+        self.horizontalLayout_30.addLayout(self.horizontalLayout_31)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_30)
+        self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_32.setObjectName("horizontalLayout_32")
+        self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.horizontalLayout_32.addLayout(self.horizontalLayout_33)
         self.verticalLayout_6.addLayout(self.horizontalLayout_32)
         self.gridLayout_6.addLayout(self.verticalLayout_6, 0, 0, 1, 1)
@@ -466,17 +448,17 @@ class Ui_MainWindow(object):
         self.groupBox_image1_4.setMinimumSize(QtCore.QSize(400, 0))
         self.groupBox_image1_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.groupBox_image1_4.setStyleSheet("QGroupBox {\n"
-                                             "background-color: #1e1e2f;\n"
-                                             "border: 1.2px solid #ffffff;\n"
-                                             "border-style: outset;\n"
-                                             "border-radius: 15px;\n"
-                                             "}\n"
-                                             "QGroupBox::title  {\n"
-                                             "    subcontrol-origin: margin;\n"
-                                             "    subcontrol-position: top left;\n"
-                                             "    padding: -5px 0px 0px 0px;\n"
-                                             "    color: rgb(255, 255, 255);\n"
-                                             "}")
+                                            "background-color: #1e1e2f;\n"
+                                            "border: 1.2px solid #ffffff;\n"
+                                            "border-style: outset;\n"
+                                            "border-radius: 15px;\n"
+                                            "}\n"
+                                            "QGroupBox::title  {\n"
+                                            "    subcontrol-origin: margin;\n"
+                                            "    subcontrol-position: top left;\n"
+                                            "    padding: -5px 0px 0px 0px;\n"
+                                            "    color: rgb(255, 255, 255);\n"
+                                            "}")
         self.groupBox_image1_4.setObjectName("groupBox_image1_4")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.groupBox_image1_4)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -494,27 +476,27 @@ class Ui_MainWindow(object):
         self.Image4_component_comboBox.setSizePolicy(sizePolicy)
         self.Image4_component_comboBox.setMinimumSize(QtCore.QSize(176, 22))
         self.Image4_component_comboBox.setStyleSheet("QComboBox\n"
-                                                     "{\n"
-                                                     "    border-radius: 3px;\n"
-                                                     "background-color: #1e1e2f;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox::drop-down\n"
-                                                     "{\n"
-                                                     "    border-left-color: transparent;\n"
-                                                     " }\n"
-                                                     "\n"
-                                                     "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
-                                                     "{\n"
-                                                     "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
-                                                     "     width: 7px;\n"
-                                                     "     height: 6px;\n"
-                                                     "}\n"
-                                                     "\n"
-                                                     "QComboBox QAbstractItemView\n"
-                                                     "{\n"
-                                                     "    selection-background-color: transparent;\n"
-                                                     "}")
+                                                    "{\n"
+                                                    "    border-radius: 3px;\n"
+                                                    "background-color: #1e1e2f;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox::drop-down\n"
+                                                    "{\n"
+                                                    "    border-left-color: transparent;\n"
+                                                    " }\n"
+                                                    "\n"
+                                                    "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
+                                                    "{\n"
+                                                    "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
+                                                    "     width: 7px;\n"
+                                                    "     height: 6px;\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QComboBox QAbstractItemView\n"
+                                                    "{\n"
+                                                    "    selection-background-color: transparent;\n"
+                                                    "}")
         self.Image4_component_comboBox.setMaxCount(2147483646)
         self.Image4_component_comboBox.setObjectName("Image4_component_comboBox")
         self.Image4_component_comboBox.addItem("")
@@ -540,20 +522,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.addWidget(self.label_20)
         self.horizontalLayout_25 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_25.setObjectName("horizontalLayout_25")
-        self.horizontalLayout_24.addLayout(self.horizontalLayout_25)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_24)
-        self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
-        self.label_21 = QtWidgets.QLabel(self.groupBox_image1_4)
-        self.label_21.setStyleSheet("background-color: transparent;")
-        self.label_21.setObjectName("label_21")
-        self.horizontalLayout_26.addWidget(self.label_21)
-        self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_27.setObjectName("horizontalLayout_27")
-        self.image4_component2_slider = QtWidgets.QSlider(self.groupBox_image1_4)
-        self.image4_component2_slider.setMinimumSize(QtCore.QSize(160, 0))
-        self.image4_component2_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.image4_component2_slider.setStyleSheet("QSlider{\n"
+        self.image4_component1_slider = QtWidgets.QSlider(self.groupBox_image1_4)
+        self.image4_component1_slider.setMinimumSize(QtCore.QSize(160, 0))
+        self.image4_component1_slider.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.image4_component1_slider.setStyleSheet("QSlider{\n"
                                                     "    background-color: transparent;\n"
                                                     "}\n"
                                                     "\n"
@@ -575,23 +547,70 @@ class Ui_MainWindow(object):
                                                     "        radius: 1, stop: 0 #bbb, stop: 1 #000\n"
                                                     "        );\n"
                                                     "}")
-        self.image4_component2_slider.setMaximum(100)
-        self.image4_component2_slider.setProperty("value", 0)
-        self.image4_component2_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.image4_component2_slider.setObjectName("image4_component2_slider")
-        self.horizontalLayout_27.addWidget(self.image4_component2_slider)
-        self.image4_component2_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_4)
-        self.image4_component2_LCD.setObjectName("image4_component2_LCD")
-        self.horizontalLayout_27.addWidget(self.image4_component2_LCD)
+        self.image4_component1_slider.setMaximum(100)
+        self.image4_component1_slider.setProperty("value", 0)
+        self.image4_component1_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.image4_component1_slider.setObjectName("image4_component1_slider")
+        self.horizontalLayout_25.addWidget(self.image4_component1_slider)
+        self.image4_component1_LCD = QtWidgets.QLCDNumber(self.groupBox_image1_4)
+        self.image4_component1_LCD.setObjectName("image4_component1_LCD")
+        self.horizontalLayout_25.addWidget(self.image4_component1_LCD)
+        self.horizontalLayout_24.addLayout(self.horizontalLayout_25)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_24)
+        self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
+        self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_27.setObjectName("horizontalLayout_27")
         self.horizontalLayout_26.addLayout(self.horizontalLayout_27)
         self.verticalLayout_4.addLayout(self.horizontalLayout_26)
         self.gridLayout_3.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
         self.horizontalLayout_34.addWidget(self.groupBox_image1_4)
         self.verticalLayout.addLayout(self.horizontalLayout_34)
         self.gridLayout_7.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        self.verticalLayout_9.addWidget(self.ImagesBox)
+        self.verticalLayout_10.addWidget(self.ImagesBox)
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.RegionBox_2 = QtWidgets.QGroupBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.RegionBox_2.sizePolicy().hasHeightForWidth())
+        self.RegionBox_2.setSizePolicy(sizePolicy)
+        self.RegionBox_2.setStyleSheet("QGroupBox {\n"
+                                    "background-color: #1e1e2f;\n"
+                                    "border: 1.2px solid #ffffff;\n"
+                                    "border-style: outset;\n"
+                                    "border-radius: 15px;\n"
+                                    "}\n"
+                                    "QGroupBox::title  {\n"
+                                    "    subcontrol-origin: margin;\n"
+                                    "    subcontrol-position: top left;\n"
+                                    "    padding: -5px 0px 0px 0px;\n"
+                                    "    color: rgb(255, 255, 255);\n"
+                                    "}")
+        self.RegionBox_2.setObjectName("RegionBox_2")
+        self.gridLayout_8 = QtWidgets.QGridLayout(self.RegionBox_2)
+        self.gridLayout_8.setObjectName("gridLayout_8")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        spacerItem4 = QtWidgets.QSpacerItem(78, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem4)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_16)
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.componen_button = QtWidgets.QRadioButton(self.RegionBox_2)
+        self.componen_button.setObjectName("componen_button")
+        self.horizontalLayout_17.addWidget(self.componen_button)
+        self.region_button = QtWidgets.QRadioButton(self.RegionBox_2)
+        self.region_button.setObjectName("region_button")
+        self.horizontalLayout_17.addWidget(self.region_button)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_17)
+        self.gridLayout_8.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
+        self.horizontalLayout_7.addWidget(self.RegionBox_2)
         self.RegionBox = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -599,17 +618,18 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.RegionBox.sizePolicy().hasHeightForWidth())
         self.RegionBox.setSizePolicy(sizePolicy)
         self.RegionBox.setStyleSheet("QGroupBox {\n"
-                                     "background-color: #1e1e2f;\n"
-                                     "border: 1.2px solid #ffffff;\n"
-                                     "border-style: outset;\n"
-                                     "border-radius: 15px;\n"
-                                     "}\n"
-                                     "QGroupBox::title  {\n"
-                                     "    subcontrol-origin: margin;\n"
-                                     "    subcontrol-position: top left;\n"
-                                     "    padding: -5px 0px 0px 0px;\n"
-                                     "    color: rgb(255, 255, 255);\n"
-                                     "}")
+                                    "background-color: #1e1e2f;\n"
+                                    "border: 1.2px solid #ffffff;\n"
+                                    "border-style: outset;\n"
+                                    "border-radius: 15px;\n"
+                                    "}\n"
+                                    "QGroupBox::title  {\n"
+                                    "    subcontrol-origin: margin;\n"
+                                    "    subcontrol-position: top left;\n"
+                                    "    padding: -5px 0px 0px 0px;\n"
+                                    "    color: rgb(255, 255, 255);\n"
+                                    "}")
+        self.RegionBox.setTitle("")
         self.RegionBox.setObjectName("RegionBox")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.RegionBox)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -621,8 +641,8 @@ class Ui_MainWindow(object):
         self.label_16.setStyleSheet("background-color: transparent;")
         self.label_16.setObjectName("label_16")
         self.horizontalLayout_13.addWidget(self.label_16)
-        spacerItem4 = QtWidgets.QSpacerItem(78, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(78, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem5)
         self.verticalLayout_5.addLayout(self.horizontalLayout_13)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
@@ -672,7 +692,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.region_LCD)
         self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         self.gridLayout_4.addLayout(self.verticalLayout_5, 0, 0, 1, 1)
-        self.verticalLayout_8.addWidget(self.RegionBox)
+        self.horizontalLayout_7.addWidget(self.RegionBox)
+        self.verticalLayout_8.addLayout(self.horizontalLayout_7)
         self.PereferenceBox = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -681,17 +702,17 @@ class Ui_MainWindow(object):
         self.PereferenceBox.setSizePolicy(sizePolicy)
         self.PereferenceBox.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.PereferenceBox.setStyleSheet("QGroupBox {\n"
-                                          "background-color: #1e1e2f;\n"
-                                          "border: 1.2px solid #ffffff;\n"
-                                          "border-style: outset;\n"
-                                          "border-radius: 15px;\n"
-                                          "}\n"
-                                          "QGroupBox::title  {\n"
-                                          "    subcontrol-origin: margin;\n"
-                                          "    subcontrol-position: top left;\n"
-                                          "    padding: -5px 0px 0px 0px;\n"
-                                          "    color: rgb(255, 255, 255);\n"
-                                          "}")
+                                        "background-color: #1e1e2f;\n"
+                                        "border: 1.2px solid #ffffff;\n"
+                                        "border-style: outset;\n"
+                                        "border-radius: 15px;\n"
+                                        "}\n"
+                                        "QGroupBox::title  {\n"
+                                        "    subcontrol-origin: margin;\n"
+                                        "    subcontrol-position: top left;\n"
+                                        "    padding: -5px 0px 0px 0px;\n"
+                                        "    color: rgb(255, 255, 255);\n"
+                                        "}")
         self.PereferenceBox.setTitle("")
         self.PereferenceBox.setObjectName("PereferenceBox")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.PereferenceBox)
@@ -709,8 +730,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addLayout(self.horizontalLayout_9)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem5)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem6)
         self.apply_button = QtWidgets.QPushButton(self.PereferenceBox, clicked = lambda: MAESTRO.mix())
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -738,13 +759,13 @@ class Ui_MainWindow(object):
                                         "            }")
         self.apply_button.setObjectName("apply_button")
         self.horizontalLayout_11.addWidget(self.apply_button)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem6)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem7)
         self.verticalLayout_7.addLayout(self.horizontalLayout_11)
         self.gridLayout_5.addLayout(self.verticalLayout_7, 0, 0, 1, 1)
         self.verticalLayout_8.addWidget(self.PereferenceBox)
-        self.verticalLayout_9.addLayout(self.verticalLayout_8)
-        self.gridLayout_8.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
+        self.verticalLayout_10.addLayout(self.verticalLayout_8)
+        self.gridLayout_9.addLayout(self.verticalLayout_10, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -756,10 +777,10 @@ class Ui_MainWindow(object):
         self.Image2_component_comboBox.setCurrentIndex(0)
         self.Image3_component_comboBox.setCurrentIndex(0)
         self.Image4_component_comboBox.setCurrentIndex(0)
-        self.image1_component2_slider.valueChanged['int'].connect(self.image1_component2_LCD.display)  # type: ignore
-        self.image2_component2_slider.valueChanged['int'].connect(self.image2_component2_LCD.display)  # type: ignore
-        self.image3_component2_slider.valueChanged['int'].connect(self.image3_component2_LCD.display)  # type: ignore
-        self.image4_component2_slider.valueChanged['int'].connect(self.image4_component2_LCD.display)  # type: ignore
+        self.image1_component1_slider.valueChanged['int'].connect(self.image1_component1_LCD.display)  # type: ignore
+        self.image2_component1_slider.valueChanged['int'].connect(self.image2_component1_LCD.display)  # type: ignore
+        self.image3_component1_slider.valueChanged['int'].connect(self.image3_component1_LCD.display)  # type: ignore
+        self.image4_component1_slider.valueChanged['int'].connect(self.image4_component1_LCD.display)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         ImageViews = [self.Image_1,self.Image1_component,self.Image_2,self.Image2_component,self.Image_3,self.Image3_component,
@@ -793,29 +814,31 @@ class Ui_MainWindow(object):
         self.Image1_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image1_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image1_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
+        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
         self.groupBox_image1_3.setTitle(_translate("MainWindow", "Image 2"))
         self.Image2_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image2_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image2_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image2_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image2_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_19.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
+        self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
         self.groupBox_image1_5.setTitle(_translate("MainWindow", "Image 3"))
         self.Image3_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image3_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image3_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image3_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image3_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_23.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
+        self.label_22.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
         self.groupBox_image1_4.setTitle(_translate("MainWindow", "Image 4"))
         self.Image4_component_comboBox.setCurrentText(_translate("MainWindow", "FT Magnitude"))
         self.Image4_component_comboBox.setItemText(0, _translate("MainWindow", "FT Magnitude"))
         self.Image4_component_comboBox.setItemText(1, _translate("MainWindow", "FT Phase"))
         self.Image4_component_comboBox.setItemText(2, _translate("MainWindow", "FT Real"))
         self.Image4_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
-        self.label_21.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component:</span></p></body></html>"))
-        self.RegionBox.setTitle(_translate("MainWindow", "Region Mixer"))
+        self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
+        self.RegionBox_2.setTitle(_translate("MainWindow", "Mixer Preferences"))
+        self.componen_button.setText(_translate("MainWindow", "Component"))
+        self.region_button.setText(_translate("MainWindow", "Region"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Pick Region:</span></p></body></html>"))
         self.OuterButton.setText(_translate("MainWindow", "Outer"))
         self.InnerButton.setText(_translate("MainWindow", "Inner"))
