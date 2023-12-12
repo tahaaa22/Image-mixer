@@ -5,6 +5,9 @@ class Ui_Output(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(964, 523)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("Assets/Logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: #1e1e2f;\n"
 "")
@@ -169,7 +172,7 @@ class Ui_Output(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Mixing Output"))
         self.groupBox_image1_5.setTitle(_translate("MainWindow", "Output 1"))
         self.groupBox_image1_7.setTitle(_translate("MainWindow", "Output 2"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Progress Bar:</span></p></body></html>"))

@@ -67,8 +67,11 @@ class AppManager:
             reconstructed_image = np.fft.ifft2(np.fft.ifftshift(output_combined_components)).real
             # Convert to uint8 for display (grayscale image)
             self.reconstructed_image_uint8 = np.uint8(reconstructed_image)
-            # Just to test, I display on image 4
-            self.display_image(self.RawImageViews[3],self.reconstructed_image_uint8)
+            if self.UI.output1_button.isChecked():
+                self.display_image(self.UI.ui.output_1, self.reconstructed_image_uint8)
+            else:
+                self.display_image(self.UI.ui.output_2, self.reconstructed_image_uint8)
+
         else:
             pass
 

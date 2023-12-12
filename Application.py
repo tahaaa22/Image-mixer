@@ -7,6 +7,7 @@ from ApplicationManager import *
 
 
 class Ui_MainWindow(object):
+
     def open_window(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Output()
@@ -601,9 +602,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addLayout(self.horizontalLayout_16)
         self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
-        self.componen_button = QtWidgets.QRadioButton(self.RegionBox_2)
-        self.componen_button.setObjectName("componen_button")
-        self.horizontalLayout_17.addWidget(self.componen_button)
+        self.component_radioButton = QtWidgets.QRadioButton(self.RegionBox_2)
+        self.component_radioButton.setObjectName("component_radioButton")
+        self.component_radioButton.setChecked(True)
+        self.horizontalLayout_17.addWidget(self.component_radioButton)
         self.region_button = QtWidgets.QRadioButton(self.RegionBox_2)
         self.region_button.setObjectName("region_button")
         self.horizontalLayout_17.addWidget(self.region_button)
@@ -722,6 +724,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.output1_button = QtWidgets.QRadioButton(self.PereferenceBox)
         self.output1_button.setObjectName("output1_button")
+        self.output1_button.setChecked(True)
         self.horizontalLayout_9.addWidget(self.output1_button)
         self.output2_button = QtWidgets.QRadioButton(self.PereferenceBox)
         self.output2_button.setObjectName("output2_button")
@@ -836,7 +839,7 @@ class Ui_MainWindow(object):
         self.Image4_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
         self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
         self.RegionBox_2.setTitle(_translate("MainWindow", "Mixer Preferences"))
-        self.componen_button.setText(_translate("MainWindow", "Component"))
+        self.component_radioButton.setText(_translate("MainWindow", "Component"))
         self.region_button.setText(_translate("MainWindow", "Region"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Pick Region:</span></p></body></html>"))
         self.OuterButton.setText(_translate("MainWindow", "Outer"))
