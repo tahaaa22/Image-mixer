@@ -8,10 +8,11 @@ from ApplicationManager import *
 
 class Ui_MainWindow(object):
 
-    def open_window(self):
+    def __init__(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Output()
         self.ui.setupUi(self.window)
+    def open_window(self):
         self.window.show()
 
     def setupUi(self, MainWindow):
