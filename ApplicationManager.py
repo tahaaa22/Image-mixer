@@ -32,6 +32,7 @@ class AppManager:
 
     def display_image(self,image_view,image_array):
         transposed_array = np.transpose(image_array)
+        image_view.clear()
         image_view.setImage(transposed_array)
 
     def view_component(self, image_view_index, component_index):
