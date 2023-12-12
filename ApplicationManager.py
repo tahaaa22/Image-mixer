@@ -38,7 +38,7 @@ class AppManager:
         self.ComponentImages[image_view_index][2] = component_index
 
     def update_slider_values(self):
-        sliders = [self.UI.image1_component2_slider, self.UI.image2_component2_slider, self.UI.image3_component2_slider, self.UI.image4_component2_slider]
+        sliders = [self.UI.image1_component1_slider, self.UI.image2_component1_slider, self.UI.image3_component1_slider, self.UI.image4_component1_slider]
         for i in range(4):
             self.ComponentImages[i][1] = sliders[i].value()
 
