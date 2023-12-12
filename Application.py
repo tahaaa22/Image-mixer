@@ -783,7 +783,10 @@ class Ui_MainWindow(object):
         self.image2_component1_slider.valueChanged['int'].connect(self.image2_component1_LCD.display)  # type: ignore
         self.image3_component1_slider.valueChanged['int'].connect(self.image3_component1_LCD.display)  # type: ignore
         self.image4_component1_slider.valueChanged['int'].connect(self.image4_component1_LCD.display)  # type: ignore
+        self.RegionSlider.valueChanged['int'].connect(self.region_LCD.display)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.RegionSlider.valueChanged.connect(lambda: MAESTRO.region_mix())
 
         ImageViews = [self.Image_1,self.Image1_component,self.Image_2,self.Image2_component,self.Image_3,self.Image3_component,
                       self.Image_4,self.Image4_component]

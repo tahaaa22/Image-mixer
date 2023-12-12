@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QFileDialog
-from PIL import Image
+from pyqtgraph import RectROI,Color
 import cv2
 from ImageClass import *
 
@@ -76,5 +76,31 @@ class AppManager:
             pass
 
 
+    def region_mix(self):
+        pass
+        # slider_value = self.UI.RegionSlider.value()
+        # for i in range(4):
+        #     if self.ComponentImageViews[i] is not None:
+        #         if not hasattr(self, 'square_roi'):
+        #             self.square_roi = RectROI([50, 50], [slider_value, slider_value])
+        #             self.ComponentImageViews[i].addItem(self.square_roi)
+        #         else:
+        #             self.square_roi.setSize([slider_value, slider_value])
 
+        #         x_position = int(self.square_roi.pos().x())
+        #         y_position = int(self.square_roi.pos().y())
+
+        #         roi_image1 = self.Images[i].image_data.copy()
+        #         roi_image1[y_position: y_position + slider_value,
+        #                 x_position: x_position + slider_value] = 0
+        #         self.display_image(self.ComponentImageViews[i], roi_image1)
+
+        # if self.UI.InnerButton.isChecked():
+        #     roi_image1 = self.Images[0].image_data[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value]
+        #     self.display_image(self.RawImageViews[3], roi_image1)
+        
+        # else:
+        #     inner_image = self.Images[0].image_data[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value]
+        #     roi_image1 = np.setdiff1d(self.Images,inner_image)
+        #     self.display_image(self.RawImageViews[2], roi_image1)
 
