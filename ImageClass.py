@@ -12,7 +12,7 @@ class OurImage:
 
     def calculate_components(self):
     
-        f_transform = np.fft.fft(self.image_data)
+        f_transform = np.fft.fft2(self.image_data)
         f_transform_shifted = np.fft.fftshift(f_transform)
 
         self.magnitude = np.abs(f_transform_shifted)

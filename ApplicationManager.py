@@ -21,16 +21,18 @@ class AppManager:
         file_path, _ = file_dialog.getOpenFileName()
 
         if file_path:
-            img = Image.open(file_path)
-            # gray_img = img.convert("L")
-            # image_array = np.array(gray_img)
             image_array = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+            resized_image = cv2.resize(image_array, (200,200))
             
-            image_object = OurImage(image_array)
+            image_object = OurImage(resized_image)
             self.Images.append(image_object)
 
-            image_view.setImage(image_array)
+            self.display_image(image_view,resized_image)
             self.view_component(int(image_view.objectName()[-1]) - 1, 0)
+
+    def display_image(self,image_view,image_array):
+        transposed_array = np.transpose(image_array)
+        image_view.setImage(transposed_array)
 
     def view_component(self, image_view_index, component_index):
         self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].Components[component_index])
@@ -66,7 +68,7 @@ class AppManager:
             # Convert to uint8 for display (grayscale image)
             self.reconstructed_image_uint8 = np.uint8(reconstructed_image)
             # Just to test, I display on image 4
-            self.RawImageViews[3].setImage(self.reconstructed_image_uint8)
+            self.display_image(self.RawImageViews[3],self.reconstructed_image_uint8)
         else:
             pass
 

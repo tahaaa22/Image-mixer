@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import ImageView
 from PyQt5.QtCore import QEvent
 import sys
-from PyQt5.QtGui import QColor
 from UI_Output import Ui_Output
 from ApplicationManager import *
 
@@ -843,7 +842,7 @@ class Ui_MainWindow(object):
         self.OuterButton.setText(_translate("MainWindow", "Outer"))
         self.InnerButton.setText(_translate("MainWindow", "Inner"))
         self.output1_button.setText(_translate("MainWindow", "Output 1"))
-        self.output2_button.setText(_translate("MainWindow", "Outout 2"))
+        self.output2_button.setText(_translate("MainWindow", "Output 2"))
         self.apply_button.setText(_translate("MainWindow", "Apply"))
 
 
