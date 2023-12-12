@@ -756,6 +756,10 @@ class Ui_MainWindow(object):
         self.Image2_component_comboBox.setCurrentIndex(0)
         self.Image3_component_comboBox.setCurrentIndex(0)
         self.Image4_component_comboBox.setCurrentIndex(0)
+        self.image1_component2_slider.valueChanged['int'].connect(self.image1_component2_LCD.display)  # type: ignore
+        self.image2_component2_slider.valueChanged['int'].connect(self.image2_component2_LCD.display)  # type: ignore
+        self.image3_component2_slider.valueChanged['int'].connect(self.image3_component2_LCD.display)  # type: ignore
+        self.image4_component2_slider.valueChanged['int'].connect(self.image4_component2_LCD.display)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         ImageViews = [self.Image_1,self.Image1_component,self.Image_2,self.Image2_component,self.Image_3,self.Image3_component,
