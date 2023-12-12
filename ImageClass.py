@@ -8,7 +8,8 @@ class OurImage:
         self.real = None
         self.imaginary = None
         self.calculate_components()
-        self.Components = [self.magnitude,self.phase,self.real,self.imaginary]
+        self.Components = [self.magnitude, self.phase, self.real, self.imaginary]
+        self.current_component_displayed = self.magnitude
 
     def calculate_components(self):
     
