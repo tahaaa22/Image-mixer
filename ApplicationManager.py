@@ -16,19 +16,20 @@ class AppManager:
 
 
     def load_image(self, image_view):
-        file_dialog = QFileDialog()
-        file_dialog.setNameFilter("Images (*.png *.jpg *.bmp)")
-        file_path, _ = file_dialog.getOpenFileName()
+        if image_view in self.RawImageViews:
+            file_dialog = QFileDialog()
+            file_dialog.setNameFilter("Images (*.png *.jpg *.bmp)")
+            file_path, _ = file_dialog.getOpenFileName()
 
-        if file_path:
-            image_array = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
-            resized_image = cv2.resize(image_array, (200,200))
-            
-            image_object = OurImage(resized_image)
-            self.Images.append(image_object)
+            if file_path:
+                image_array = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+                resized_image = cv2.resize(image_array, (200,200))
 
-            self.display_image(image_view,resized_image)
-            self.view_component(int(image_view.objectName()[-1]) - 1, 0)
+                image_object = OurImage(resized_image)
+                self.Images.append(image_object)
+
+                self.display_image(image_view,resized_image)
+                self.view_component(int(image_view.objectName()[-1]) - 1, 0)
 
     def display_image(self,image_view,image_array):
         transposed_array = np.transpose(image_array)
