@@ -16,7 +16,8 @@ class OurImage:
         f_transform = np.fft.fft2(self.image_data)
         f_transform_shifted = np.fft.fftshift(f_transform)
 
-        self.magnitude = cv2.normalize(20 * np.log(np.abs(f_transform_shifted)), None, 0, 255, cv2.NORM_MINMAX)
+        #self.magnitude = cv2.normalize(np.abs(f_transform_shifted), None, 0, 255, cv2.NORM_MINMAX)
+        self.magnitude = np.abs(f_transform_shifted)
         self.phase = np.angle(f_transform_shifted)
         self.real = np.real(f_transform_shifted)
         self.imaginary = np.imag(f_transform_shifted)

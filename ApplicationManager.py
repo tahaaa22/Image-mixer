@@ -1,6 +1,4 @@
 from PyQt5.QtWidgets import QFileDialog
-from pyqtgraph import RectROI,Color
-import cv2
 from ImageClass import *
 
 class AppManager:
@@ -31,7 +29,8 @@ class AppManager:
                 self.display_image(image_view,resized_image)
                 self.view_component(int(image_view.objectName()[-1]) - 1, 0)
 
-    def display_image(self,image_view,image_array):
+    @staticmethod
+    def display_image(image_view, image_array):
         transposed_array = np.transpose(image_array)
         image_view.clear()
         image_view.setImage(transposed_array)
@@ -67,8 +66,10 @@ class AppManager:
             output_combined_components = output_mag_phase + output_real_imag
             # Perform the Inverse Fourier Transform to reconstruct the image
             reconstructed_image = np.fft.ifft2(np.fft.ifftshift(output_combined_components)).real
+            # Normalize the pixel values to the range [0, 255] for display
+            reconstructed_image_normalized = cv2.normalize(reconstructed_image, None, 0, 255, cv2.NORM_MINMAX)
             # Convert to uint8 for display (grayscale image)
-            self.reconstructed_image_uint8 = np.uint8(reconstructed_image)
+            self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
             if self.UI.output1_button.isChecked():
                 self.display_image(self.UI.ui.output_1, self.reconstructed_image_uint8)
             else:
