@@ -10,7 +10,7 @@ class Ui_MainWindow(object):
 
     def __init__(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Output()
+        self.ui = Ui_Output(self.window)
         self.ui.setupUi(self.window)
     def open_window(self):
         self.window.show()

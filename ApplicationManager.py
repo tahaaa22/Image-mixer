@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QFileDialog
 from ImageClass import *
-
+from PyQt5.QtCore import QTimer
 class AppManager:
     def __init__(self, ui):
         self.UI = ui
@@ -11,6 +11,7 @@ class AppManager:
         self.ComponentImages = [[None, 0, 0], [None, 0, 0], [None, 0, 0], [None, 0, 0]]
         self.components_mode = True
         self.reconstructed_image_uint8 = None
+        self.timer = None
 
 
     def load_image(self, image_view):
@@ -53,6 +54,7 @@ class AppManager:
 
     def mix(self):
         self.UI.open_window()
+        self.start_progress()
         if self.components_mode:
             self.update_slider_values()
             # 1. Magnitude 2. Phase 3. Real 4. Imaginary
@@ -78,6 +80,24 @@ class AppManager:
         else:
             pass
 
+    def start_progress(self):
+        self.UI.ui.progressBar.setValue(0)
+        interval = 40 # milliseconds
+
+        # Create a timer to update the progress
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_progress)
+        self.timer.start(interval)
+
+
+    def update_progress(self):
+        # Increment the progress bar value
+        current_value = self.UI.ui.progressBar.value()
+        new_value = min(current_value + int(100 / (1000 / 40)), 100)
+        self.UI.ui.progressBar.setValue(new_value)
+        # Stop the timer when the progress reaches 100%
+        if new_value == 100:
+            self.timer.stop()
 
     def region_mix(self):
         pass
