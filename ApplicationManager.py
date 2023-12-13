@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QFileDialog
 from ImageClass import *
+from pyqtgraph import RectROI,ROI
 from PyQt5.QtCore import QTimer
 class AppManager:
     def __init__(self, ui):
@@ -12,6 +13,7 @@ class AppManager:
         self.components_mode = True
         self.reconstructed_image_uint8 = None
         self.timer = None
+        #self.roi = RectROI((0,0), (0,0), centered=True)
 
 
     def load_image(self, image_view):
@@ -100,30 +102,21 @@ class AppManager:
             self.timer.stop()
 
     def region_mix(self):
-        pass
-        # slider_value = self.UI.RegionSlider.value()
+        slider_value = self.UI.RegionSlider.value()
         # for i in range(4):
-        #     if self.ComponentImageViews[i] is not None:
-        #         if not hasattr(self, 'square_roi'):
-        #             self.square_roi = RectROI([50, 50], [slider_value, slider_value])
-        #             self.ComponentImageViews[i].addItem(self.square_roi)
-        #         else:
-        #             self.square_roi.setSize([slider_value, slider_value])
-
-        #         x_position = int(self.square_roi.pos().x())
-        #         y_position = int(self.square_roi.pos().y())
-
-        #         roi_image1 = self.Images[i].image_data.copy()
-        #         roi_image1[y_position: y_position + slider_value,
-        #                 x_position: x_position + slider_value] = 0
-        #         self.display_image(self.ComponentImageViews[i], roi_image1)
-
-        # if self.UI.InnerButton.isChecked():
-        #     roi_image1 = self.Images[0].image_data[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value]
-        #     self.display_image(self.RawImageViews[3], roi_image1)
+        #     self.roi.setPos(100 - slider_value,100 - slider_value)
+        #     self.roi.setSize((slider_value, slider_value))
+        #     self.roi.setPen(255,255,255,255)
+        #     self.ComponentImageViews[i].addItem(self.roi)
         
-        # else:
-        #     inner_image = self.Images[0].image_data[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value]
-        #     roi_image1 = np.setdiff1d(self.Images,inner_image)
-        #     self.display_image(self.RawImageViews[2], roi_image1)
+        image_array = self.Images[0].phase.copy()
+        if self.UI.OuterButton.isChecked():
+            image_array[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value] = 0
+            self.display_image(self.RawImageViews[3], image_array)
+        else:
+            image_array[:100 - slider_value, :] = 0
+            image_array[100 + slider_value:, :] = 0
+            image_array[:, :100 - slider_value] = 0
+            image_array[:, 100 + slider_value:] = 0
+            self.display_image(self.RawImageViews[2], image_array)
 
