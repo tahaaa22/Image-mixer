@@ -1,8 +1,22 @@
 from PyQt5.QtWidgets import QFileDialog
 from ImageClass import *
 from pyqtgraph import RectROI,ROI
-import cv2
+import cv2, logging, time
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+
+# Standard Logging Levels:
+
+# DEBUG: Detailed information, typically of interest only when diagnosing problems.
+
+# INFO: Confirmation that things are working as expected.
+
+# WARNING: An indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low’). The software is still working as expected.
+
+# ERROR: Due to a more serious problem, the software has not been able to perform some function.
+
+# CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
+
+logging.basicConfig(filename="results.log", level=logging.INFO, format='%(asctime)s - %(message)s')
 
 class WorkerThread(QThread):
     finished_signal = pyqtSignal()
@@ -12,7 +26,7 @@ class WorkerThread(QThread):
         for i in range(1, 6):
             self.msleep(2000)  # Simulating a time-consuming operation
             if self.isInterruptionRequested():
-                print("Thread interrupted. Aborting...")
+                print("Thread interrupted. Aborted.")
                 return
 
             print(f"Task {i} completed")
@@ -28,6 +42,8 @@ class AppManager:
         self.ComponentImages = [[None, 0, 0], [None, 0, 0], [None, 0, 0], [None, 0, 0]]
         self.reconstructed_image_uint8 = None
         self.timer = None
+        self.start_time = None
+        self.end_time = None
         #self.roi = RectROI((0,0), (0,0), centered=True)
 
 
@@ -57,6 +73,8 @@ class AppManager:
         self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].Components[component_index])
         self.ComponentImages[image_view_index][0] = self.Images[image_view_index].Components[component_index]
         self.ComponentImages[image_view_index][2] = component_index
+        index_to_component = ["Magnitude", "Phase", "Real Part", "Imaginary Part"]
+        logging.info(f"Image View {image_view_index + 1} switched to component {index_to_component[component_index]}.")
 
     def update_slider_values(self):
         sliders = [self.UI.image1_component1_slider, self.UI.image2_component1_slider, self.UI.image3_component1_slider, self.UI.image4_component1_slider]
@@ -82,11 +100,11 @@ class AppManager:
         self.UI.open_window()
         self.start_progress()
         self.run_function()
+        self.start_time = time.time()
         if self.UI.component_radioButton.isChecked():
             image = self.component_mix()
         else:
             image = self.region_mix()
-        
         if self.UI.output1_button.isChecked():
             self.display_image(self.UI.ui.output_1, image)
         else:
@@ -100,6 +118,8 @@ class AppManager:
             if component_value is None:
                 continue
             output_components[component_type] += component_value * slider_value / 100.0
+        self.end_time = time.time()
+        logging.info(f"Components Mixing Done in {self.end_time - self.start_time} second(s)")
         return self.reconstruct_image(output_components)
 
     def start_progress(self):
@@ -121,7 +141,6 @@ class AppManager:
             self.timer.stop()
 
     def region_mix(self):
-
         slider_value = self.UI.RegionSlider.value()
         # for i in range(4):
         #     self.roi.setPos(100 - slider_value,100 - slider_value)
@@ -143,6 +162,8 @@ class AppManager:
                 image_array[:, 100 + slider_value:] = 0
 
             output_components[component_index] += image_array
+        self.end_time = time.time()
+        logging.info(f"Region Mixing Done in {self.end_time - self.start_time} second(s)")
         return self.reconstruct_image(output_components)
         
     def reconstruct_image(self, output_components):
