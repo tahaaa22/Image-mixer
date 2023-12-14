@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 
 class OurImage:
     def __init__(self, data):
@@ -21,6 +20,7 @@ class OurImage:
         self.phase = np.angle(f_transform_shifted)
         self.real = np.real(f_transform_shifted)
         self.imaginary = np.imag(f_transform_shifted)
+
 
 
 

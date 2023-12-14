@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QFileDialog
 from ImageClass import *
 from pyqtgraph import RectROI,ROI
+import cv2
 from PyQt5.QtCore import QTimer
 class AppManager:
     def __init__(self, ui):
@@ -10,7 +11,6 @@ class AppManager:
         self.Images = []
         # The list below is not list of image views, but rather 1.components displayed, 2.slider_value, 3.index of combobox
         self.ComponentImages = [[None, 0, 0], [None, 0, 0], [None, 0, 0], [None, 0, 0]]
-        self.components_mode = True
         self.reconstructed_image_uint8 = None
         self.timer = None
         #self.roi = RectROI((0,0), (0,0), centered=True)
@@ -48,7 +48,6 @@ class AppManager:
         for i in range(4):
             self.ComponentImages[i][1] = sliders[i].value()
 
-
     def switch_mode(self):
         # TODO Implement this function to switch between the 2 modes
         self.components_mode = not self.components_mode
@@ -57,30 +56,25 @@ class AppManager:
     def mix(self):
         self.UI.open_window()
         self.start_progress()
-        if self.components_mode:
-            self.update_slider_values()
-            # 1. Magnitude 2. Phase 3. Real 4. Imaginary
-            output_components = [1, 0, 0, 0]
-            for component_value, slider_value, component_type in self.ComponentImages:
-                if component_value is None:
-                    continue
-                output_components[component_type] += component_value * slider_value / 100.0
-            output_mag_phase = output_components[0] * np.exp(1j * output_components[1])
-            output_real_imag = output_components[2] + 1j * output_components[3]
-            output_combined_components = output_mag_phase + output_real_imag
-            # Perform the Inverse Fourier Transform to reconstruct the image
-            reconstructed_image = np.fft.ifft2(np.fft.ifftshift(output_combined_components)).real
-            # Normalize the pixel values to the range [0, 255] for display
-            reconstructed_image_normalized = cv2.normalize(reconstructed_image, None, 0, 255, cv2.NORM_MINMAX)
-            # Convert to uint8 for display (grayscale image)
-            self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
-            if self.UI.output1_button.isChecked():
-                self.display_image(self.UI.ui.output_1, self.reconstructed_image_uint8)
-            else:
-                self.display_image(self.UI.ui.output_2, self.reconstructed_image_uint8)
-
+        if self.UI.component_radioButton.isChecked():
+            image = self.component_mix()
         else:
-            pass
+            image = self.region_mix()
+        
+        if self.UI.output1_button.isChecked():
+            self.display_image(self.UI.ui.output_1, image)
+        else:
+            self.display_image(self.UI.ui.output_2, image)
+
+    def component_mix(self):
+        self.update_slider_values()
+        # 1. Magnitude 2. Phase 3. Real 4. Imaginary
+        output_components = [1, 0, 0, 0]
+        for component_value, slider_value, component_type in self.ComponentImages:
+            if component_value is None:
+                continue
+            output_components[component_type] += component_value * slider_value / 100.0
+        return self.reconstruct_image(output_components)
 
     def start_progress(self):
         self.UI.ui.progressBar.setValue(0)
@@ -90,7 +84,6 @@ class AppManager:
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_progress)
         self.timer.start(interval)
-
 
     def update_progress(self):
         # Increment the progress bar value
@@ -102,6 +95,7 @@ class AppManager:
             self.timer.stop()
 
     def region_mix(self):
+
         slider_value = self.UI.RegionSlider.value()
         # for i in range(4):
         #     self.roi.setPos(100 - slider_value,100 - slider_value)
@@ -109,14 +103,41 @@ class AppManager:
         #     self.roi.setPen(255,255,255,255)
         #     self.ComponentImageViews[i].addItem(self.roi)
         
-        image_array = self.Images[0].phase.copy()
-        if self.UI.OuterButton.isChecked():
-            image_array[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value] = 0
-            self.display_image(self.RawImageViews[3], image_array)
-        else:
-            image_array[:100 - slider_value, :] = 0
-            image_array[100 + slider_value:, :] = 0
-            image_array[:, :100 - slider_value] = 0
-            image_array[:, 100 + slider_value:] = 0
-            self.display_image(self.RawImageViews[2], image_array)
+        output_components = [1, 0, 0, 0]
+        for component_data, _, component_index in self.ComponentImages:
+            if component_data is None:
+                continue
+            image_array = component_data
+            if self.UI.OuterButton.isChecked():
+                image_array[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value] = 0
+            else:
+                image_array[:100 - slider_value, :] = 0
+                image_array[100 + slider_value:, :] = 0
+                image_array[:, :100 - slider_value] = 0
+                image_array[:, 100 + slider_value:] = 0
+
+            output_components[component_index] += image_array
+        return self.reconstruct_image(output_components)
+        
+    def reconstruct_image(self, output_components):
+        output_mag_phase = output_components[0] * np.exp(1j * output_components[1])
+        output_real_imag = output_components[2] + 1j * output_components[3]
+        output_combined_components = output_mag_phase + output_real_imag
+        
+        # Perform the Inverse Fourier Transform to reconstruct the image
+        reconstructed_image = np.fft.ifft2(np.fft.ifftshift(output_combined_components)).real
+        # Normalize the pixel values to the range [0, 255] for display
+        reconstructed_image_normalized = cv2.normalize(reconstructed_image, None, 0, 255, cv2.NORM_MINMAX)
+        # Convert to uint8 for display (grayscale image)
+        self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
+        return self.reconstructed_image_uint8
+        
+
+        
+        
+
+        
+        
+
+    
 
