@@ -2,7 +2,22 @@ from PyQt5.QtWidgets import QFileDialog
 from ImageClass import *
 from pyqtgraph import RectROI,ROI
 import cv2
-from PyQt5.QtCore import QTimer
+from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+
+class WorkerThread(QThread):
+    finished_signal = pyqtSignal()
+
+    def run(self):
+        # Perform your time-consuming operation here
+        for i in range(1, 6):
+            self.msleep(2000)  # Simulating a time-consuming operation
+            if self.isInterruptionRequested():
+                print("Thread interrupted. Aborting...")
+                return
+
+            print(f"Task {i} completed")
+        self.finished_signal.emit()
+
 class AppManager:
     def __init__(self, ui):
         self.UI = ui
@@ -48,14 +63,25 @@ class AppManager:
         for i in range(4):
             self.ComponentImages[i][1] = sliders[i].value()
 
-    def switch_mode(self):
-        # TODO Implement this function to switch between the 2 modes
-        self.components_mode = not self.components_mode
-        # Complete the function.
+    def run_function(self):
+        # Create and start the worker thread
+        self.worker_thread = WorkerThread()
+        self.worker_thread.finished_signal.connect(self.function_finished)
+        self.worker_thread.start()
+
+    @staticmethod
+    def function_finished():
+        print("Synchronous Function completed")
+
+    def abort(self):
+        if hasattr(self, 'worker_thread') and self.worker_thread.isRunning():
+            print("Aborting...")
+            self.worker_thread.requestInterruption()
 
     def mix(self):
         self.UI.open_window()
         self.start_progress()
+        self.run_function()
         if self.UI.component_radioButton.isChecked():
             image = self.component_mix()
         else:

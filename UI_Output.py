@@ -7,9 +7,11 @@ class Ui_Output(object):
 
     def __init__(self, window):
         self.window = window
+        self.appManager = None
 
     def abort(self):
         self.window.close()
+        self.appManager.abort()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

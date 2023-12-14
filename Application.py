@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pyqtgraph import ImageView
-from PyQt5.QtCore import QEvent
 import sys
 from UI_Output import Ui_Output
 from ApplicationManager import *
@@ -871,5 +870,6 @@ if __name__ == "__main__":
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
         MAESTRO = AppManager(ui)
+        ui.ui.appManager = MAESTRO
         MainWindow.show()
         sys.exit(app.exec_())
