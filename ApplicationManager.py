@@ -37,7 +37,12 @@ class AppManager:
         self.UI = ui
         self.RawImageViews = [ui.Image_1,ui.Image_2,ui.Image_3,ui.Image_4]
         self.ComponentImageViews = [ui.Image1_component,ui.Image2_component,ui.Image3_component,ui.Image4_component]
-        self.Images = []
+        self.Images = {
+            0:None,
+            1:None,
+            2:None,
+            3:None
+        }
         # The list below is not list of image views, but rather 1.components displayed, 2.slider_value, 3.index of combobox
         self.ComponentImages = [[None, 0, 0], [None, 0, 0], [None, 0, 0], [None, 0, 0]]
         self.reconstructed_image_uint8 = None
@@ -58,7 +63,7 @@ class AppManager:
                 resized_image = cv2.resize(image_array, (200,200))
 
                 image_object = OurImage(resized_image)
-                self.Images.append(image_object)
+                self.Images[int(image_view.objectName()[-1]) - 1] = image_object
 
                 self.display_image(image_view,resized_image)
                 self.view_component(int(image_view.objectName()[-1]) - 1, 0)
