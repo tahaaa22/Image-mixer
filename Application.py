@@ -170,7 +170,7 @@ class Ui_MainWindow(object):
                                                     "        );\n"
                                                     "}")
         self.image1_component1_slider.setMaximum(100)
-        self.image1_component1_slider.setProperty("value", 100)
+        self.image1_component1_slider.setProperty("value", 0)
         self.image1_component1_slider.setOrientation(QtCore.Qt.Horizontal)
         self.image1_component1_slider.setObjectName("image1_component1_slider")
         self.horizontalLayout_6.addWidget(self.image1_component1_slider)
@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
                                                     "        );\n"
                                                     "}")
         self.image2_component1_slider.setMaximum(100)
-        self.image2_component1_slider.setProperty("value", 100)
+        self.image2_component1_slider.setProperty("value", 0)
         self.image2_component1_slider.setOrientation(QtCore.Qt.Horizontal)
         self.image2_component1_slider.setObjectName("image2_component1_slider")
         self.horizontalLayout_19.addWidget(self.image2_component1_slider)
@@ -421,7 +421,7 @@ class Ui_MainWindow(object):
                                                     "        );\n"
                                                     "}")
         self.image3_component1_slider.setMaximum(100)
-        self.image3_component1_slider.setProperty("value", 100)
+        self.image3_component1_slider.setProperty("value", 0)
         self.image3_component1_slider.setOrientation(QtCore.Qt.Horizontal)
         self.image3_component1_slider.setObjectName("image3_component1_slider")
         self.horizontalLayout_31.addWidget(self.image3_component1_slider)
@@ -548,7 +548,7 @@ class Ui_MainWindow(object):
                                                     "        );\n"
                                                     "}")
         self.image4_component1_slider.setMaximum(100)
-        self.image4_component1_slider.setProperty("value", 100)
+        self.image4_component1_slider.setProperty("value", 0)
         self.image4_component1_slider.setOrientation(QtCore.Qt.Horizontal)
         self.image4_component1_slider.setObjectName("image4_component1_slider")
         self.horizontalLayout_25.addWidget(self.image4_component1_slider)
@@ -861,6 +861,7 @@ class Ui_MainWindow(object):
 
 class ImageView(ImageView):
     def mouseDoubleClickEvent(self, event):
+        self.clear()
         MAESTRO.load_image(self)
 
 
