@@ -3,6 +3,7 @@ from ImageClass import *
 from pyqtgraph import RectROI,ROI
 import cv2, logging, time
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+import warnings
 
 # Standard Logging Levels:
 
@@ -50,6 +51,8 @@ class AppManager:
         self.timer = None
         self.start_time = None
         self.end_time = None
+        # self.first_press_x_coordinate = 0
+        # self.first_press_y_coordinate = 0
 
     def load_image(self, image_view):
         if image_view in self.RawImageViews:
@@ -66,9 +69,10 @@ class AppManager:
                 self.display_image(image_view, resized_image)
                 self.view_component(int(image_view.objectName()[-1]) - 1, 0)
 
-    @staticmethod
-    def display_image(image_view, image_array):
+    # @staticmethod
+    def display_image(self,image_view, image_array):
         transposed_array = np.transpose(image_array)
+        self.raw_images.append(transposed_array)
         image_view.clear()
         image_view.setImage(transposed_array)
 
@@ -177,33 +181,34 @@ class AppManager:
         self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
         return self.reconstructed_image_uint8
 
-    def calculate_changes_percentages(self,image_view, old_x_coordinates, old_y_coordinates, new_x_coordinates, new_y_coordinates):
-        x_change_percentage = float((new_x_coordinates - old_x_coordinates)/old_x_coordinates)
-        y_change_percentage = float((new_y_coordinates - old_y_coordinates)/old_y_coordinates)
-        if (x_change_percentage < -0.2 or x_change_percentage > 0.2) and (-0.2 <= y_change_percentage <= 0.2):
-            if x_change_percentage > 3.0:
-                x_change_percentage = 3.0
-            elif x_change_percentage < -1.0:
-                x_change_percentage = -0.999
-            x_change_percentage += 1
-            self.change_contrast(image_view, x_change_percentage)
-        if (y_change_percentage < -0.2 or y_change_percentage > 0.2) and (-0.2 <= x_change_percentage <= 0.2):
-            if y_change_percentage > 3.0:
-                y_change_percentage = 3.0
-            elif y_change_percentage < -3.0:
-                y_change_percentage = -3.0
-            y_change_percentage = (y_change_percentage / 3.0) * 100
-            self.change_brightness(image_view, beta=y_change_percentage)
+    def calculate_changes_percentages(self, image_view, old_x_coordinates, old_y_coordinates, new_x_coordinates, new_y_coordinates):
+        if image_view.getImageItem:
+            x_change_percentage = float((new_x_coordinates - old_x_coordinates)/old_x_coordinates)
+            y_change_percentage = float((new_y_coordinates - old_y_coordinates)/old_y_coordinates)
+            if (x_change_percentage < -0.2 or x_change_percentage > 0.2) and (-0.2 <= y_change_percentage <= 0.2):
+                if x_change_percentage > 3.0:
+                    x_change_percentage = 3.0
+                elif x_change_percentage < -1.0:
+                    x_change_percentage = -0.999
+                x_change_percentage += 1
+                self.change_contrast(image_view, x_change_percentage)
+            elif (y_change_percentage < -0.2 or y_change_percentage > 0.2) and (-0.2 <= x_change_percentage <= 0.2):
+                if y_change_percentage > 3.0:
+                    y_change_percentage = 3.0
+                elif y_change_percentage < -3.0:
+                    y_change_percentage = -3.0
+                y_change_percentage = (y_change_percentage / 3.0) * 100
+                self.change_brightness(image_view, beta=y_change_percentage)
 
     def change_brightness(self, image_view, beta):
         raw_image = image_view.getImageItem()
-        adjusted_image = cv2.convertScaleAbs(raw_image, beta=beta)
-        image_view.setImageItem(adjusted_image)
+        adjusted_image = cv2.convertScaleAbs(self.raw_images[0], beta=beta)
+        image_view.setImage(adjusted_image)
 
     def change_contrast(self, image_view, alpha):
         raw_image = image_view.getImageItem()
-        adjusted_image = cv2.convertScaleAbs(raw_image, alpha=alpha)
-        image_view.setImageItem(adjusted_image)
+        adjusted_image = cv2.convertScaleAbs(self.raw_images[0], alpha=alpha)
+        image_view.setImage(adjusted_image)
 
 
     def draw_region(self):
