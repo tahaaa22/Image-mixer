@@ -2,6 +2,10 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
 import cv2, logging, time
 from ImageClass import *
+from pyqtgraph import RectROI,ROI
+import cv2, logging, time
+from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+import pyqtgraph
 
 # Standard Logging Levels:
 
@@ -36,7 +40,6 @@ class AppManager:
         self.UI = ui
         self.RawImageViews = [ui.Image_1, ui.Image_2, ui.Image_3, ui.Image_4]
         self.ComponentImageViews = [ui.Image1_component,ui.Image2_component,ui.Image3_component,ui.Image4_component]
-        self.raw_images = []
         self.Images = {
             0: None,
             1: None,
@@ -49,8 +52,8 @@ class AppManager:
         self.timer = None
         self.start_time = None
         self.end_time = None
-        # self.first_press_x_coordinate = 0
-        # self.first_press_y_coordinate = 0
+        self.first_press_x_coordinates = 0
+        self.first_press_y_coordinates = 0
 
     def load_image(self, image_view):
         if image_view in self.RawImageViews:
@@ -67,10 +70,9 @@ class AppManager:
                 self.display_image(image_view, resized_image)
                 self.view_component(int(image_view.objectName()[-1]) - 1, 0)
 
-    # @staticmethod
-    def display_image(self,image_view, image_array):
+    @staticmethod
+    def display_image(image_view, image_array):
         transposed_array = np.transpose(image_array)
-        self.raw_images.append(transposed_array)
         image_view.clear()
         image_view.setImage(transposed_array)
 
@@ -126,7 +128,7 @@ class AppManager:
                 output_components[component_type] += (component_value * slider_value / 100.0) **2
             else:
                 output_components[component_type] += component_value * slider_value / 100.0
-        
+
         self.end_time = time.time()
         logging.info(f"Components Mixing Done in {self.end_time - self.start_time} second(s)")
         return self.reconstruct_image(output_components)
@@ -172,7 +174,7 @@ class AppManager:
         # Stop the timer when the progress reaches 100%
         if new_value == 100:
             self.timer.stop()
-        
+
     def reconstruct_image(self, output_components):
         output_mag_phase = np.sqrt(output_components[0]) * np.exp(1j * output_components[1]/2)
         output_real_imag = output_components[2] + 1j * output_components[3]
@@ -186,34 +188,30 @@ class AppManager:
         self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
         return self.reconstructed_image_uint8
 
-    def calculate_changes_percentages(self, image_view, old_x_coordinates, old_y_coordinates, new_x_coordinates, new_y_coordinates):
-        if image_view.getImageItem:
-            x_change_percentage = float((new_x_coordinates - old_x_coordinates)/old_x_coordinates)
-            y_change_percentage = float((new_y_coordinates - old_y_coordinates)/old_y_coordinates)
-            if (x_change_percentage < -0.2 or x_change_percentage > 0.2) and (-0.2 <= y_change_percentage <= 0.2):
-                if x_change_percentage > 3.0:
-                    x_change_percentage = 3.0
-                elif x_change_percentage < -1.0:
-                    x_change_percentage = -0.999
-                x_change_percentage += 1
-                self.change_contrast(image_view, x_change_percentage)
-            elif (y_change_percentage < -0.2 or y_change_percentage > 0.2) and (-0.2 <= x_change_percentage <= 0.2):
-                if y_change_percentage > 3.0:
-                    y_change_percentage = 3.0
-                elif y_change_percentage < -3.0:
-                    y_change_percentage = -3.0
-                y_change_percentage = (y_change_percentage / 3.0) * 100
-                self.change_brightness(image_view, beta=y_change_percentage)
+    def calculate_changes_percentages(self, image_view, image_view_index, new_x_coordinates, new_y_coordinates):
+        if image_view in self.RawImageViews:
+            if (image_view.getImageItem is not None):
+                x_change_percentage = float((new_x_coordinates - self.first_press_x_coordinates)/self.first_press_x_coordinates)
+                y_change_percentage = float((new_y_coordinates - self.first_press_y_coordinates)/self.first_press_y_coordinates)
+                if (x_change_percentage < -y_change_percentage or x_change_percentage > y_change_percentage):
+                    x_change_percentage += 1.0
+                    self.change_contrast(image_view, image_view_index, x_change_percentage)
+                elif (y_change_percentage < -x_change_percentage or y_change_percentage > x_change_percentage):
+                    y_change_percentage = (y_change_percentage / 3.0) * 100
+                    self.change_brightness(image_view, image_view_index, y_change_percentage)
 
-    def change_brightness(self, image_view, beta):
-        raw_image = image_view.getImageItem()
-        adjusted_image = cv2.convertScaleAbs(self.raw_images[0], beta=beta)
-        image_view.setImage(adjusted_image)
 
-    def change_contrast(self, image_view, alpha):
-        raw_image = image_view.getImageItem()
-        adjusted_image = cv2.convertScaleAbs(self.raw_images[0], alpha=alpha)
-        image_view.setImage(adjusted_image)
+    def change_brightness(self, image_view,image_view_index, beta):
+        raw_image = self.Images[image_view_index].image_data
+        if raw_image is not None:
+            adjusted_image = cv2.convertScaleAbs(raw_image, None, 1.0, beta)
+            self.display_image(image_view, adjusted_image)
+
+    def change_contrast(self, image_view, image_view_index, alpha):
+        raw_image = self.Images[image_view_index].image_data
+        if raw_image is not None:
+            adjusted_image = cv2.convertScaleAbs(raw_image, None, alpha, 0)
+            self.display_image(image_view, adjusted_image)
 
 
     def draw_region(self):
@@ -226,9 +224,9 @@ class AppManager:
             for i in range(4):
                 if self.Images[i]:
                     data = self.Images[i].image_data.copy()
-                    image = cv2.rectangle(data, start_point, end_point, color, 2) 
+                    image = cv2.rectangle(data, start_point, end_point, color, 2)
                     self.display_image(self.RawImageViews[i],image)
-                
+
         
 
         

@@ -3,6 +3,7 @@ from pyqtgraph import ImageView
 import sys
 from UI_Output import Ui_Output
 from ApplicationManager import *
+from PyQt5.QtGui import QMouseEvent
 
 
 
@@ -131,7 +132,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.Image_1 = ImageView(self.groupBox_image1_2)
-        self.Image_1.scene.sigMouseMoved.connect(self.Image_1.mouseMoveEvent)
+        self.Image_1.scene.sigMouseMoved.connect(lambda event: self.Image_1.mouseMoveEvent(event, 0))
+        self.Image_1.scene.sigMouseClicked.connect(lambda event: self.Image_1.mouseReleaseEvent(event))
         self.Image_1.setObjectName("Image_1")
         self.horizontalLayout_4.addWidget(self.Image_1)
         self.Image1_component = ImageView(self.groupBox_image1_2)
@@ -253,7 +255,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.Image_2 = ImageView(self.groupBox_image1_3)
-        self.Image_2.scene.sigMouseMoved.connect(self.Image_2.mouseMoveEvent)
+        self.Image_2.scene.sigMouseMoved.connect(lambda event: self.Image_2.mouseMoveEvent(event, 1))
+        self.Image_2.scene.sigMouseClicked.connect(lambda event: self.Image_2.mouseReleaseEvent(event))
         self.Image_2.setObjectName("Image_2")
         self.horizontalLayout_14.addWidget(self.Image_2)
         self.Image2_component = ImageView(self.groupBox_image1_3)
@@ -384,7 +387,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
         self.Image_3 = ImageView(self.groupBox_image1_5)
-        self.Image_3.scene.sigMouseMoved.connect(self.Image_3.mouseMoveEvent)
+        self.Image_3.scene.sigMouseMoved.connect(lambda event: self.Image_3.mouseMoveEvent(event, 2))
+        self.Image_3.scene.sigMouseClicked.connect(lambda event: self.Image_3.mouseReleaseEvent(event))
         self.Image_3.setObjectName("Image_3")
         self.horizontalLayout_29.addWidget(self.Image_3)
         self.Image3_component = ImageView(self.groupBox_image1_5)
@@ -512,7 +516,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_23.setObjectName("horizontalLayout_23")
         self.Image_4 = ImageView(self.groupBox_image1_4)
-        self.Image_4.scene.sigMouseMoved.connect(self.Image_4.mouseMoveEvent)
+        self.Image_4.scene.sigMouseMoved.connect(lambda event: self.Image_4.mouseMoveEvent(event, 3))
+        self.Image_4.scene.sigMouseClicked.connect(lambda event: self.Image_4.mouseReleaseEvent(event))
         self.Image_4.setObjectName("Image_4")
         self.horizontalLayout_23.addWidget(self.Image_4)
         self.Image4_component = ImageView(self.groupBox_image1_4)
@@ -856,8 +861,6 @@ class Ui_MainWindow(object):
 class ImageView(ImageView):
     def __init__(self, parent=None):
         super().__init__(parent=None)
-        self.first_press_x_coordinates = 0
-        self.first_press_y_coordinates = 0
         self.cursor_x_coordinates = 0
         self.cursor_y_coordinates = 0
 
@@ -866,18 +869,28 @@ class ImageView(ImageView):
         MAESTRO.load_image(self)
 
     def mousePressEvent(self, event):
-        self.first_press_x_coordinates = event.x()
-        self.first_press_y_coordinates = event.y()
-        # MAESTRO.first_press_x_coordinate = event.x()
-        # MAESTRO.first_press_y_coordinate = event.y()
+        MAESTRO.first_press_x_coordinates = event.x()
+        MAESTRO.first_press_y_coordinates = event.y()
+        self.setMouseTracking(True)
+        print(f"first press {event.x()}, {event.y()}")
 
 
-    def mouseMoveEvent(self, event):
+
+    def mouseReleaseEvent(self, event):
+        MAESTRO.first_press_x_coordinates = 0
+        MAESTRO.first_press_y_coordinates = 0
+        self.setMouseTracking(False)
+        print("mouse release ")
+
+
+    def mouseMoveEvent(self, event, image_view_index):
         self.cursor_x_coordinates = event.x()
         self.cursor_y_coordinates = event.y()
-        if self.first_press_x_coordinates and self.first_press_y_coordinates:
-            MAESTRO.calculate_changes_percentages(self, self.first_press_x_coordinates, self.first_press_y_coordinates,
-                                                  self.cursor_x_coordinates, self.cursor_y_coordinates)
+        if MAESTRO.first_press_x_coordinates and MAESTRO.first_press_y_coordinates:
+            MAESTRO.calculate_changes_percentages(self, image_view_index, self.cursor_x_coordinates, self.cursor_y_coordinates)
+        print(f"mouse cursor {self.cursor_x_coordinates}, {self.cursor_y_coordinates}")
+
+
 
 
 
