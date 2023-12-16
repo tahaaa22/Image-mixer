@@ -49,8 +49,6 @@ class AppManager:
         self.timer = None
         self.start_time = None
         self.end_time = None
-        #self.roi = RectROI((0,0), (0,0), centered=True)
-
 
     def load_image(self, image_view):
         if image_view in self.RawImageViews:
@@ -147,17 +145,12 @@ class AppManager:
 
     def region_mix(self):
         slider_value = self.UI.RegionSlider.value()
-        # for i in range(4):
-        #     self.roi.setPos(100 - slider_value,100 - slider_value)
-        #     self.roi.setSize((slider_value, slider_value))
-        #     self.roi.setPen(255,255,255,255)
-        #     self.ComponentImageViews[i].addItem(self.roi)
-        
+    
         output_components = [1, 0, 0, 0]
         for component_data, _, component_index in self.ComponentImages:
             if component_data is None:
                 continue
-            image_array = component_data
+            image_array = component_data.copy()
             if self.UI.OuterButton.isChecked():
                 image_array[100 - slider_value : 100 + slider_value , 100 - slider_value: 100 + slider_value] = 0
             else:
@@ -184,8 +177,23 @@ class AppManager:
         self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
         return self.reconstructed_image_uint8
         
+    def draw_region(self):
+        slider_value = self.UI.RegionSlider.value()
+        start_point = (100 - slider_value,100 - slider_value)
+        end_point = (100 + slider_value,100 + slider_value)
+        color = (255, 0, 0)
 
-        
+        if self.UI.region_button.isChecked():
+            for i in range(4):
+                # if self.ComponentImages[i][0]:
+                #     image = cv2.rectangle(self.ComponentImages[i][0], start_point, end_point, color, 2) 
+                #     self.display_image(self.ComponentImageViews[i],image)
+                
+                # if self.Images[i]:
+                #     data = self.Images[i].image_data.copy()
+                #     image = cv2.rectangle(data, start_point, end_point, color, 2) 
+                #     self.display_image(self.RawImageViews[i],image)
+                self.display_image(self.RawImageViews[3],self.ComponentImages[0][0])
         
 
         

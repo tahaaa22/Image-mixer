@@ -657,6 +657,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.RegionSlider = QtWidgets.QSlider(self.RegionBox)
+        self.RegionSlider.valueChanged.connect(lambda: MAESTRO.draw_region())
         self.RegionSlider.setMinimumSize(QtCore.QSize(160, 0))
         self.RegionSlider.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.RegionSlider.setStyleSheet("QSlider{\n"
@@ -796,17 +797,6 @@ class Ui_MainWindow(object):
                 image.ui.menuBtn.hide()
 
         self.component_connections() # Connecting combobox IndexChanged to display new component
-
-        # Do NOT delete this repetition
-        # self.Image1_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(0,self.Image1_component_comboBox.currentIndex()))
-        # self.Image2_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(1,self.Image2_component_comboBox.currentIndex()))
-        # self.Image3_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(2,self.Image3_component_comboBox.currentIndex()))
-        # self.Image4_component_comboBox.currentIndexChanged.connect(lambda: MAESTRO.view_component(3,self.Image4_component_comboBox.currentIndex()))
-
-        # ComponentImageViews = [self.Image1_component,self.Image2_component,self.Image3_component,self.Image4_component]
-        # background_color = QColor(255, 255, 255)
-        # for image in ComponentImageViews:
-        #     image.ui.graphicsView.setBackground(background_color)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
