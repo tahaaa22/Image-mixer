@@ -1,8 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import pyqtgraph
 from pyqtgraph import ImageView
 import sys
 from UI_Output import Ui_Output
 from ApplicationManager import *
+from PyQt5.QtCore import QEvent
 
 
 class Ui_MainWindow(object):
@@ -850,9 +852,40 @@ class Ui_MainWindow(object):
             component_comboboxes[i].currentIndexChanged.connect(lambda index, i=i: MAESTRO.view_component(i, index))
 
 class ImageView(ImageView):
+    dragged = pyqtSignal(int,int)
+    def __init__(self, parent=None):
+        super().__init__(parent=None)
+        self.old_x_coordinates = 0
+        self.old_y_coordinates = 0
+        self.new_x_coordinates = 0
+        self.new_y_coordinates = 0
+
     def mouseDoubleClickEvent(self, event):
         self.clear()
         MAESTRO.load_image(self)
+
+    def mousePressEvent(self, event):
+        self.old_x_coordinates = event.x()
+        self.old_y_coordinates = event.y()
+        self.setMouseTracking(True)
+        print(f"first press coordinates {self.old_x_coordinates} {self.old_y_coordinates}")
+
+    def mouseReleaseEvent(self, event):
+        self.setMouseTracking(False)
+        print(f"tracking is stopped")
+
+    def mouseMoveEvent(self, event):
+        self.new_x_coordinates = event.x()
+        self.new_y_coordinates = event.y()
+        MAESTRO.calculate_changes_percentages(self, self.old_x_coordinates, self.old_y_coordinates,
+                                              self.new_x_coordinates, self.new_y_coordinates)
+        print(f"last press coordinates {self.new_x_coordinates} {self.new_y_coordinates}")
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
