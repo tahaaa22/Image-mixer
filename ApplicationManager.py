@@ -35,13 +35,14 @@ class WorkerThread(QThread):
 class AppManager:
     def __init__(self, ui):
         self.UI = ui
-        self.RawImageViews = [ui.Image_1,ui.Image_2,ui.Image_3,ui.Image_4]
+        self.RawImageViews = [ui.Image_1, ui.Image_2, ui.Image_3, ui.Image_4]
         self.ComponentImageViews = [ui.Image1_component,ui.Image2_component,ui.Image3_component,ui.Image4_component]
+        self.raw_images = []
         self.Images = {
-            0:None,
-            1:None,
-            2:None,
-            3:None
+            0: None,
+            1: None,
+            2: None,
+            3: None
         }
         # The list below is not list of image views, but rather 1.components displayed, 2.slider_value, 3.index of combobox
         self.ComponentImages = [[None, 0, 0], [None, 0, 0], [None, 0, 0], [None, 0, 0]]
@@ -49,8 +50,7 @@ class AppManager:
         self.timer = None
         self.start_time = None
         self.end_time = None
-        #self.roi = RectROI((0,0), (0,0), centered=True)
-
+        # self.roi = RectROI((0,0), (0,0), centered=True)
 
     def load_image(self, image_view):
         if image_view in self.RawImageViews:
@@ -60,12 +60,11 @@ class AppManager:
 
             if file_path:
                 image_array = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
-                resized_image = cv2.resize(image_array, (200,200))
+                resized_image = cv2.resize(image_array, (200, 200))
 
                 image_object = OurImage(resized_image)
                 self.Images[int(image_view.objectName()[-1]) - 1] = image_object
-
-                self.display_image(image_view,resized_image)
+                self.display_image(image_view, resized_image)
                 self.view_component(int(image_view.objectName()[-1]) - 1, 0)
 
     @staticmethod
@@ -183,7 +182,36 @@ class AppManager:
         # Convert to uint8 for display (grayscale image)
         self.reconstructed_image_uint8 = np.uint8(reconstructed_image_normalized)
         return self.reconstructed_image_uint8
-        
+
+    def calculate_changes_percentages(self,image_view, old_x_coordinates, old_y_coordinates, new_x_coordinates, new_y_coordinates):
+        x_change_percentage = float((new_x_coordinates - old_x_coordinates)/old_x_coordinates)
+        y_change_percentage = float((new_y_coordinates - old_y_coordinates)/old_y_coordinates)
+        if (x_change_percentage < -0.2 or x_change_percentage > 0.2) and (-0.2 <= y_change_percentage <= 0.2):
+            if x_change_percentage > 3.0:
+                x_change_percentage = 3.0
+            elif x_change_percentage < -1.0:
+                x_change_percentage = -0.999
+            x_change_percentage += 1
+            self.change_contrast(image_view, x_change_percentage)
+        if (y_change_percentage < -0.2 or y_change_percentage > 0.2) and (-0.2 <= x_change_percentage <= 0.2):
+            if y_change_percentage > 3.0:
+                y_change_percentage = 3.0
+            elif y_change_percentage < -3.0:
+                y_change_percentage = -3.0
+            y_change_percentage = (y_change_percentage / 3.0) * 100
+            self.change_brightness(image_view, beta=y_change_percentage)
+
+    def change_brightness(self, image_view, beta):
+        raw_image = image_view.getImageItem()
+        adjusted_image = cv2.convertScaleAbs(raw_image, beta=beta)
+        image_view.setImageItem(adjusted_image)
+
+    def change_contrast(self, image_view, alpha):
+        raw_image = image_view.getImageItem()
+        adjusted_image = cv2.convertScaleAbs(raw_image, alpha=alpha)
+        image_view.setImageItem(adjusted_image)
+
+
 
         
         
