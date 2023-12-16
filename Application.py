@@ -794,9 +794,11 @@ class Ui_MainWindow(object):
                       self.Image_4,self.Image4_component]
 
         for image in ImageViews:
-                image.ui.histogram.hide()
-                image.ui.roiBtn.hide()
-                image.ui.menuBtn.hide()
+            image.ui.histogram.hide()
+            image.ui.roiBtn.hide()
+            image.ui.menuBtn.hide()
+            image.view.setMouseEnabled(x=False, y=False)
+            
 
         self.component_connections() # Connecting combobox IndexChanged to display new component
 
@@ -844,11 +846,8 @@ class Ui_MainWindow(object):
 
 
     def component_connections(self):
-        # TODO Super interesting phenomenon to be explained!
-        # https://stackoverflow.com/questions/2295290/what-do-lambda-function-closures-capture
         component_comboboxes = [self.Image1_component_comboBox, self.Image2_component_comboBox, self.Image3_component_comboBox, self.Image4_component_comboBox]
         for i in range(4):
-            # component_comboboxes[i].currentIndexChanged.connect(lambda: MAESTRO.view_component(i, component_comboboxes[i].currentIndex()))
             component_comboboxes[i].currentIndexChanged.connect(lambda index, i=i: MAESTRO.view_component(i, index))
 
 class ImageView(ImageView):
