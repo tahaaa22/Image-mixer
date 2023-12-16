@@ -1,9 +1,7 @@
 from PyQt5.QtWidgets import QFileDialog
-from ImageClass import *
-from pyqtgraph import RectROI,ROI
-import cv2, logging, time
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
-import warnings
+import cv2, logging, time
+from ImageClass import *
 
 # Standard Logging Levels:
 
@@ -219,15 +217,11 @@ class AppManager:
 
         if self.UI.region_button.isChecked():
             for i in range(4):
-                # if self.ComponentImages[i][0]:
-                #     image = cv2.rectangle(self.ComponentImages[i][0], start_point, end_point, color, 2) 
-                #     self.display_image(self.ComponentImageViews[i],image)
+                if self.Images[i]:
+                    data = self.Images[i].image_data.copy()
+                    image = cv2.rectangle(data, start_point, end_point, color, 2) 
+                    self.display_image(self.RawImageViews[i],image)
                 
-                # if self.Images[i]:
-                #     data = self.Images[i].image_data.copy()
-                #     image = cv2.rectangle(data, start_point, end_point, color, 2) 
-                #     self.display_image(self.RawImageViews[i],image)
-                self.display_image(self.RawImageViews[3],self.ComponentImages[0][0])
         
 
         
