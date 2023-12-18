@@ -1,11 +1,8 @@
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
-import cv2, logging, time
+import logging, time, cv2
 from ImageClass import *
-from pyqtgraph import RectROI,ROI
-import cv2, logging, time
-from PyQt5.QtCore import QTimer, QThread, pyqtSignal
-import pyqtgraph
+
 
 # Standard Logging Levels:
 
@@ -124,10 +121,7 @@ class AppManager:
         for component_value, slider_value, component_type in self.ComponentImages:
             if component_value is None:
                 continue
-            if component_type == 0:
-                output_components[component_type] += (component_value * slider_value / 100.0) **2
-            else:
-                output_components[component_type] += component_value * slider_value / 100.0
+            output_components[component_type] += component_value * slider_value / 100.0
 
         self.end_time = time.time()
         logging.info(f"Components Mixing Done in {self.end_time - self.start_time} second(s)")
@@ -148,10 +142,8 @@ class AppManager:
                 image_array[100 + slider_value:, :] = 0
                 image_array[:, :100 - slider_value] = 0
                 image_array[:, 100 + slider_value:] = 0
-            if component_index == 0:
-                output_components[component_index] += image_array **2
-            else:
-                output_components[component_index] += image_array
+
+            output_components[component_index] += image_array
 
         self.end_time = time.time()
         logging.info(f"Region Mixing Done in {self.end_time - self.start_time} second(s)")
@@ -176,7 +168,7 @@ class AppManager:
             self.timer.stop()
 
     def reconstruct_image(self, output_components):
-        output_mag_phase = np.sqrt(output_components[0]) * np.exp(1j * output_components[1]/2)
+        output_mag_phase = (output_components[0]) * np.exp(1j * output_components[1])
         output_real_imag = output_components[2] + 1j * output_components[3]
         output_combined_components = output_mag_phase + output_real_imag
         

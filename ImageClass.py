@@ -20,7 +20,3 @@ class OurImage:
         self.phase = np.angle(f_transform_shifted)
         self.real = np.real(f_transform_shifted)
         self.imaginary = np.imag(f_transform_shifted)
-
-
-
-

@@ -852,7 +852,6 @@ class Ui_MainWindow(object):
         self.output2_button.setText(_translate("MainWindow", "Output 2"))
         self.apply_button.setText(_translate("MainWindow", "Apply"))
 
-
     def component_connections(self):
         component_comboboxes = [self.Image1_component_comboBox, self.Image2_component_comboBox, self.Image3_component_comboBox, self.Image4_component_comboBox]
         for i in range(4):
@@ -872,32 +871,17 @@ class ImageView(ImageView):
         MAESTRO.first_press_x_coordinates = event.x()
         MAESTRO.first_press_y_coordinates = event.y()
         self.setMouseTracking(True)
-        print(f"first press {event.x()}, {event.y()}")
-
-
 
     def mouseReleaseEvent(self, event):
         MAESTRO.first_press_x_coordinates = 0
         MAESTRO.first_press_y_coordinates = 0
         self.setMouseTracking(False)
-        print("mouse release ")
-
 
     def mouseMoveEvent(self, event, image_view_index):
         self.cursor_x_coordinates = event.x()
         self.cursor_y_coordinates = event.y()
         if MAESTRO.first_press_x_coordinates and MAESTRO.first_press_y_coordinates:
             MAESTRO.calculate_changes_percentages(self, image_view_index, self.cursor_x_coordinates, self.cursor_y_coordinates)
-        print(f"mouse cursor {self.cursor_x_coordinates}, {self.cursor_y_coordinates}")
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
         app = QtWidgets.QApplication(sys.argv)
