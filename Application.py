@@ -3,7 +3,6 @@ from pyqtgraph import ImageView
 import sys
 from UI_Output import Ui_Output
 from ApplicationManager import *
-from PyQt5.QtGui import QMouseEvent
 
 
 
@@ -131,7 +130,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.Image_1 = ImageView(self.groupBox_image1_2)
+        self.Image_1 = ImageView1(self.groupBox_image1_2)
         self.Image_1.scene.sigMouseMoved.connect(lambda event: self.Image_1.mouseMoveEvent(event, 0))
         self.Image_1.scene.sigMouseClicked.connect(lambda event: self.Image_1.mouseReleaseEvent(event))
         self.Image_1.setObjectName("Image_1")
@@ -254,7 +253,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.Image_2 = ImageView(self.groupBox_image1_3)
+        self.Image_2 = ImageView1(self.groupBox_image1_3)
         self.Image_2.scene.sigMouseMoved.connect(lambda event: self.Image_2.mouseMoveEvent(event, 1))
         self.Image_2.scene.sigMouseClicked.connect(lambda event: self.Image_2.mouseReleaseEvent(event))
         self.Image_2.setObjectName("Image_2")
@@ -386,7 +385,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addLayout(self.horizontalLayout_28)
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
-        self.Image_3 = ImageView(self.groupBox_image1_5)
+        self.Image_3 = ImageView1(self.groupBox_image1_5)
         self.Image_3.scene.sigMouseMoved.connect(lambda event: self.Image_3.mouseMoveEvent(event, 2))
         self.Image_3.scene.sigMouseClicked.connect(lambda event: self.Image_3.mouseReleaseEvent(event))
         self.Image_3.setObjectName("Image_3")
@@ -515,7 +514,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_22)
         self.horizontalLayout_23 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_23.setObjectName("horizontalLayout_23")
-        self.Image_4 = ImageView(self.groupBox_image1_4)
+        self.Image_4 = ImageView1(self.groupBox_image1_4)
         self.Image_4.scene.sigMouseMoved.connect(lambda event: self.Image_4.mouseMoveEvent(event, 3))
         self.Image_4.scene.sigMouseClicked.connect(lambda event: self.Image_4.mouseReleaseEvent(event))
         self.Image_4.setObjectName("Image_4")
@@ -772,6 +771,33 @@ class Ui_MainWindow(object):
                                         "            }")
         self.apply_button.setObjectName("apply_button")
         self.horizontalLayout_11.addWidget(self.apply_button)
+        self.reset_button = QtWidgets.QPushButton(self.PereferenceBox, clicked = lambda: MAESTRO.reset_brightness_and_contrast())
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.reset_button.sizePolicy().hasHeightForWidth())
+        self.reset_button.setSizePolicy(sizePolicy)
+        self.reset_button.setMaximumSize(QtCore.QSize(234, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.reset_button.setFont(font)
+        self.reset_button.setStyleSheet(" QPushButton#reset_button {\n"
+                                        "                background-color: #28a745;\n"
+                                        "                color: white;\n"
+                                        "                border: none;\n"
+                                        "                padding: 5px 10px;\n"
+                                        "                border-radius: 5px;\n"
+                                        "            }\n"
+                                        "            \n"
+                                        "            QPushButton#apply_button:hover {\n"
+                                        "                background-color: #218838;\n"
+                                        "            }\n"
+                                        "            \n"
+                                        "            QPushButton#apply_button:pressed {\n"
+                                        "                background-color: #1e7e34;\n"
+                                        "            }")
+        self.reset_button.setObjectName("reset_button")
+        self.horizontalLayout_11.addWidget(self.reset_button)
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem7)
         self.verticalLayout_7.addLayout(self.horizontalLayout_11)
@@ -798,15 +824,14 @@ class Ui_MainWindow(object):
         self.RegionSlider.valueChanged['int'].connect(self.region_LCD.display)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        ImageViews = [self.Image_1,self.Image1_component,self.Image_2,self.Image2_component,self.Image_3,self.Image3_component,
-                      self.Image_4,self.Image4_component]
+        ImageViews = [self.Image_1, self.Image1_component, self.Image_2, self.Image2_component, self.Image_3, self.Image3_component,
+                      self.Image_4, self.Image4_component]
 
         for image in ImageViews:
             image.ui.histogram.hide()
             image.ui.roiBtn.hide()
             image.ui.menuBtn.hide()
             image.view.setMouseEnabled(x=False, y=False)
-            
 
         self.component_connections() # Connecting combobox IndexChanged to display new component
 
@@ -851,15 +876,16 @@ class Ui_MainWindow(object):
         self.output1_button.setText(_translate("MainWindow", "Output 1"))
         self.output2_button.setText(_translate("MainWindow", "Output 2"))
         self.apply_button.setText(_translate("MainWindow", "Apply"))
+        self.reset_button.setText(_translate("MainWindow", "Reset Contrast and Brightness"))
 
     def component_connections(self):
         component_comboboxes = [self.Image1_component_comboBox, self.Image2_component_comboBox, self.Image3_component_comboBox, self.Image4_component_comboBox]
         for i in range(4):
             component_comboboxes[i].currentIndexChanged.connect(lambda index, i=i: MAESTRO.view_component(i, index))
 
-class ImageView(ImageView):
+class ImageView1(ImageView):
     def __init__(self, parent=None):
-        super().__init__(parent=None)
+        super().__init__(parent=parent)
         self.cursor_x_coordinates = 0
         self.cursor_y_coordinates = 0
 
@@ -870,12 +896,10 @@ class ImageView(ImageView):
     def mousePressEvent(self, event):
         MAESTRO.first_press_x_coordinates = event.x()
         MAESTRO.first_press_y_coordinates = event.y()
-        self.setMouseTracking(True)
 
     def mouseReleaseEvent(self, event):
         MAESTRO.first_press_x_coordinates = 0
         MAESTRO.first_press_y_coordinates = 0
-        self.setMouseTracking(False)
 
     def mouseMoveEvent(self, event, image_view_index):
         self.cursor_x_coordinates = event.x()

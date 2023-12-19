@@ -53,7 +53,6 @@ class AppManager:
         self.first_press_y_coordinates = 0
 
     def load_image(self, image_view):
-        if image_view in self.RawImageViews:
             file_dialog = QFileDialog()
             file_dialog.setNameFilter("Images (*.png *.jpg *.bmp)")
             file_path, _ = file_dialog.getOpenFileName()
@@ -74,7 +73,10 @@ class AppManager:
         image_view.setImage(transposed_array)
 
     def view_component(self, image_view_index, component_index):
-        self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].Components[component_index])
+        if component_index == 0:
+            self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].viewed_magnitude)
+        else:
+            self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].Components[component_index])
         self.ComponentImages[image_view_index][0] = self.Images[image_view_index].Components[component_index]
         self.ComponentImages[image_view_index][2] = component_index
         index_to_component = ["Magnitude", "Phase", "Real Part", "Imaginary Part"]
@@ -182,27 +184,39 @@ class AppManager:
 
     def calculate_changes_percentages(self, image_view, image_view_index, new_x_coordinates, new_y_coordinates):
         if image_view in self.RawImageViews:
-            if (image_view.getImageItem is not None):
-                x_change_percentage = float((new_x_coordinates - self.first_press_x_coordinates)/self.first_press_x_coordinates)
-                y_change_percentage = float((new_y_coordinates - self.first_press_y_coordinates)/self.first_press_y_coordinates)
-                if (x_change_percentage < -y_change_percentage or x_change_percentage > y_change_percentage):
+            if image_view.getImageItem:
+                x_change_percentage = float((new_x_coordinates - self.first_press_x_coordinates) / self.first_press_x_coordinates)
+                y_change_percentage = float((self.first_press_y_coordinates - new_y_coordinates) / new_y_coordinates)
+                if (x_change_percentage < -0.01 or x_change_percentage > 0.01) and (-0.2 <= y_change_percentage <= 0.2):
+                    if x_change_percentage > 3.0:
+                        x_change_percentage = 3.0
+                    elif x_change_percentage < -1.0:
+                        x_change_percentage = -1.0
                     x_change_percentage += 1.0
                     self.change_contrast(image_view, image_view_index, x_change_percentage)
-                elif (y_change_percentage < -x_change_percentage or y_change_percentage > x_change_percentage):
+                elif (y_change_percentage < -0.01 or y_change_percentage > 0.01) and (-0.2 <= x_change_percentage <= 0.2):
+                    if y_change_percentage > 3.0:
+                        y_change_percentage = 3.0
+                    elif y_change_percentage < -3.0:
+                        y_change_percentage = -3.0
                     y_change_percentage = (y_change_percentage / 3.0) * 100
+                    if y_change_percentage > 0:
+                        y_change_percentage += 30
+                    else:
+                        y_change_percentage -= 30
                     self.change_brightness(image_view, image_view_index, y_change_percentage)
 
 
     def change_brightness(self, image_view,image_view_index, beta):
-        raw_image = self.Images[image_view_index].image_data
-        if raw_image is not None:
+        if self.Images[image_view_index]:
+            raw_image = self.Images[image_view_index].image_data
             adjusted_image = cv2.convertScaleAbs(raw_image, None, 1.0, beta)
             self.display_image(image_view, adjusted_image)
 
     def change_contrast(self, image_view, image_view_index, alpha):
-        raw_image = self.Images[image_view_index].image_data
-        if raw_image is not None:
-            adjusted_image = cv2.convertScaleAbs(raw_image, None, alpha, 0)
+        if self.Images[image_view_index]:
+            raw_image = self.Images[image_view_index].image_data
+            adjusted_image = cv2.convertScaleAbs(raw_image, None, alpha, 0.0)
             self.display_image(image_view, adjusted_image)
 
 
@@ -219,7 +233,11 @@ class AppManager:
                     image = cv2.rectangle(data, start_point, end_point, color, 2)
                     self.display_image(self.RawImageViews[i],image)
 
-        
+    def reset_brightness_and_contrast(self):
+        for i in range(len(self.Images)):
+            if self.Images[i]:
+                self.display_image(self.RawImageViews[i], self.Images[i].image_data)
+
 
         
         
