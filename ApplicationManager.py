@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtCore import QTimer, QThread, pyqtSignal
-import logging, time, cv2
+from PyQt5.QtCore import QTimer, QThread, pyqtSignal, Qt
+import logging, time
 from ImageClass import *
 
 
@@ -36,7 +36,7 @@ class AppManager:
     def __init__(self, ui):
         self.UI = ui
         self.RawImageViews = [ui.Image_1, ui.Image_2, ui.Image_3, ui.Image_4]
-        self.ComponentImageViews = [ui.Image1_component,ui.Image2_component,ui.Image3_component,ui.Image4_component]
+        self.ComponentImageViews = [ui.Image1_component, ui.Image2_component, ui.Image3_component, ui.Image4_component]
         self.Images = {
             0: None,
             1: None,
@@ -51,6 +51,9 @@ class AppManager:
         self.end_time = None
         self.first_press_x_coordinates = 0
         self.first_press_y_coordinates = 0
+        self.mixing_type_comboBox_previous_index = 0
+        self.components_comboBoxes = [self.UI.Image1_component_comboBox, self.UI.Image2_component_comboBox,
+                                      self.UI.Image3_component_comboBox, self.UI.Image4_component_comboBox]
 
     def load_image(self, image_view):
             file_dialog = QFileDialog()
@@ -68,19 +71,22 @@ class AppManager:
 
     @staticmethod
     def display_image(image_view, image_array):
-        transposed_array = np.transpose(image_array)
-        image_view.clear()
-        image_view.setImage(transposed_array)
+            transposed_array = np.transpose(image_array)
+            image_view.clear()
+            image_view.setImage(transposed_array)
 
     def view_component(self, image_view_index, component_index):
-        if component_index == 0:
-            self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].viewed_magnitude)
-        else:
-            self.ComponentImageViews[image_view_index].setImage(self.Images[image_view_index].Components[component_index])
-        self.ComponentImages[image_view_index][0] = self.Images[image_view_index].Components[component_index]
-        self.ComponentImages[image_view_index][2] = component_index
-        index_to_component = ["Magnitude", "Phase", "Real Part", "Imaginary Part"]
-        logging.info(f"Image View {image_view_index + 1} switched to component {index_to_component[component_index]}.")
+        if self.Images[image_view_index]:
+            if component_index == 0:
+                self.display_image(self.ComponentImageViews[image_view_index],
+                                   self.Images[image_view_index].viewed_magnitude)
+            else:
+                self.display_image(self.ComponentImageViews[image_view_index],
+                                   self.Images[image_view_index].Components[component_index])
+            self.ComponentImages[image_view_index][0] = self.Images[image_view_index].Components[component_index]
+            self.ComponentImages[image_view_index][2] = component_index
+            index_to_component = ["Magnitude", "Phase", "Real Part", "Imaginary Part"]
+            logging.info(f"Image View {image_view_index + 1} switched to component {index_to_component[component_index]}.")
 
     def update_slider_values(self):
         sliders = [self.UI.image1_component1_slider, self.UI.image2_component1_slider, self.UI.image3_component1_slider, self.UI.image4_component1_slider]
@@ -222,7 +228,7 @@ class AppManager:
 
     def draw_region(self):
         slider_value = self.UI.RegionSlider.value()
-        start_point = (100 - slider_value,100 - slider_value)
+        start_point = (100 - slider_value,  100 - slider_value)
         end_point = (100 + slider_value,100 + slider_value)
         color = (255, 0, 0)
 
@@ -231,7 +237,7 @@ class AppManager:
                 if self.Images[i]:
                     data = self.Images[i].image_data.copy()
                     image = cv2.rectangle(data, start_point, end_point, color, 2)
-                    self.display_image(self.RawImageViews[i],image)
+                    self.display_image(self.RawImageViews[i], image)
 
     def reset_brightness_and_contrast(self):
         for i in range(len(self.Images)):
@@ -239,8 +245,22 @@ class AppManager:
                 self.display_image(self.RawImageViews[i], self.Images[i].image_data)
 
 
-        
-        
-
-    
+    def hide_components(self):
+        comboboxes_mag_phas_components = ["FT Magnitude", "FT Phase", "", ""]
+        comboboxes_real_imag_components = ["", "", "FT Real", "FT Imaginary"]
+        comboboxes_all_components = ["FT Magnitude", "FT Phase", "FT Real", "FT Imaginary"]
+        if self.UI.mixing_type_comboBox.currentIndex() == 0:
+            for i in range(4):
+                self.components_comboBoxes[i].clear()
+                self.components_comboBoxes[i].insertItems(0, comboboxes_all_components)
+        elif self.UI.mixing_type_comboBox.currentIndex() == 1:
+            for i in range(4):
+                self.components_comboBoxes[i].clear()
+                self.components_comboBoxes[i].insertItems(0, comboboxes_mag_phas_components)
+        elif self.UI.mixing_type_comboBox.currentIndex() == 2:
+            for i in range(4):
+                self.components_comboBoxes[i].clear()
+                self.components_comboBoxes[i].insertItems(2, comboboxes_real_imag_components)
+                self.components_comboBoxes[i].setCurrentIndex(2)
+                self.display_image(self.ComponentImageViews[i], self.Images[i].Components[2])
 

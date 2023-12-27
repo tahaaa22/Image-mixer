@@ -611,6 +611,40 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addLayout(self.horizontalLayout_16)
         self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.mixing_type_comboBox = QtWidgets.QComboBox(self.RegionBox_2)
+        self.mixing_type_comboBox.setMinimumSize(QtCore.QSize(0, 25))
+        self.mixing_type_comboBox.setStyleSheet("QComboBox\n"
+                                    "{\n"
+                                    "    border-radius: 3px;\n"
+                                    "background-color: #1e1e2f;\n"
+                                    "}\n"
+                                    "\n"
+                                    "QComboBox::drop-down\n"
+                                    "{\n"
+                                    "    border-left-color: transparent;\n"
+                                    " }\n"
+                                    "\n"
+                                    "QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow\n"
+                                    "{\n"
+                                    "     image: url(:/icons/Arrowhead-nottop-256.png);\n"
+                                    "     width: 7px;\n"
+                                    "     height: 6px;\n"
+                                    "}\n"
+                                    "\n"
+                                    "QComboBox QAbstractItemView\n"
+                                    "{\n"
+                                    "    selection-background-color: transparent;\n"
+                                    "}")
+        self.mixing_type_comboBox.setEditable(False)
+        self.mixing_type_comboBox.setMaxVisibleItems(3)
+        self.mixing_type_comboBox.setInsertPolicy(QtWidgets.QComboBox.InsertAtBottom)
+        self.mixing_type_comboBox.setMinimumContentsLength(1)
+        self.mixing_type_comboBox.setFrame(True)
+        self.mixing_type_comboBox.setObjectName("mixing_type_comboBox")
+        self.mixing_type_comboBox.addItem("")
+        self.mixing_type_comboBox.addItem("")
+        self.mixing_type_comboBox.addItem("")
+        self.horizontalLayout_17.addWidget(self.mixing_type_comboBox)
         self.component_radioButton = QtWidgets.QRadioButton(self.RegionBox_2)
         self.component_radioButton.setObjectName("component_radioButton")
         self.component_radioButton.setChecked(True)
@@ -868,6 +902,9 @@ class Ui_MainWindow(object):
         self.Image4_component_comboBox.setItemText(3, _translate("MainWindow", "FT Imaginary"))
         self.label_20.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Component :</span></p></body></html>"))
         self.RegionBox_2.setTitle(_translate("MainWindow", "Mixer Preferences"))
+        self.mixing_type_comboBox.setItemText(0, _translate("MainWindow", "View Only"))
+        self.mixing_type_comboBox.setItemText(1, _translate("MainWindow", "Magnitude & Phase"))
+        self.mixing_type_comboBox.setItemText(2, _translate("MainWindow", "Real & Imaginary"))
         self.component_radioButton.setText(_translate("MainWindow", "Component"))
         self.region_button.setText(_translate("MainWindow", "Region"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Pick Region:</span></p></body></html>"))
@@ -882,6 +919,7 @@ class Ui_MainWindow(object):
         component_comboboxes = [self.Image1_component_comboBox, self.Image2_component_comboBox, self.Image3_component_comboBox, self.Image4_component_comboBox]
         for i in range(4):
             component_comboboxes[i].currentIndexChanged.connect(lambda index, i=i: MAESTRO.view_component(i, index))
+        self.mixing_type_comboBox.currentIndexChanged.connect(lambda: MAESTRO.hide_components())
 
 class ImageView1(ImageView):
     def __init__(self, parent=None):
